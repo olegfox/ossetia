@@ -1,0 +1,28 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% from 'SiteMainBundle:Frontend/News:macros.html.twig' import listTab %}
+{% from 'SiteMainBundle:Frontend/News:macros.html.twig' import main %}
+{% from 'SiteMainBundle:Frontend/Quote:macros.html.twig' import mainQuotes %}
+
+{% block title %}{{page.metaTitle}}{% endblock %}
+{% block description %}{{page.metaDescription}}{% endblock %}
+{% block keywords %}{{page.metaDescription}}{% endblock %}
+
+{% block main_content %}
+    {{ main(news[0]) }}
+    {{ listTab(news, 1) }}
+{% endblock %}
+
+{% block content %}
+    {{ parent() }}
+    {{ mainQuotes(quotes) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    'bundles/sitemain/frontend/js/script.js'
+    filter='yui_js' %}
+    <script type="text/javascript" src="{{ asset_url }}" id="scripts"></script>
+    {% endjavascripts %}
+{% endblock %}

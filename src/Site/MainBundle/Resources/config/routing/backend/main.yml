@@ -1,0 +1,43 @@
+backend_dashboard:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Dashboard:index" }
+
+backend_page:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/page.yml"
+    prefix:   /page
+
+backend_slider:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/slider.yml"
+    prefix:   /slider
+
+backend_menu:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/menu.yml"
+    prefix:   /menu
+
+backend_photo:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/photo.yml"
+    prefix:   /photo    
+
+backend_client:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/client.yml"
+    prefix:   /client
+
+backend_news:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/news.yml"
+    prefix: /news
+
+backend_quote:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/quote.yml"
+    prefix: /quote
+
+backend_news_paper:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/news_paper.yml"
+    prefix: /news_paper
+
+backend_user:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/user.yml"
+    prefix: /user
+
+backend_media:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/media.yml"
+    prefix: /media

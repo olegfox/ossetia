@@ -1,0 +1,30 @@
+backend_slider_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Slider:index" }
+
+backend_slider_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Slider:show" }
+
+backend_slider_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Slider:new" }
+
+backend_slider_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Slider:create" }
+    requirements: { _method: post }
+
+backend_slider_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Slider:edit" }
+
+backend_slider_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Slider:update" }
+    requirements: { _method: post|put }
+
+backend_slider_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Slider:delete" }
+    requirements: { _method: post|delete }

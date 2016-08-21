@@ -1,0 +1,30 @@
+backend_menu_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Menu:index" }
+
+backend_menu_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Menu:show" }
+
+backend_menu_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Menu:new" }
+
+backend_menu_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Menu:create" }
+    requirements: { _method: post }
+
+backend_menu_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Menu:edit" }
+
+backend_menu_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Menu:update" }
+    requirements: { _method: post|put }
+
+backend_menu_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Menu:delete" }
+    requirements: { _method: post|delete }

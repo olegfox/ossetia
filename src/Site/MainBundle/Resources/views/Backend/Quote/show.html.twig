@@ -1,0 +1,60 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.quote.h1_show'|trans }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>{{ 'backend.quote.title'|trans }}</th>
+            <td>{{ entity.title }}</td>
+        </tr>
+        {% if entity.img|length > 0 %}
+        <tr>
+            <th>{{ 'backend.quote.img'|trans }}</th>
+            <td><a href="{{ asset(entity.webPath) }}" target="_blank"><img src="{{ image(entity.webPath).resize(150) }}" alt="{{ entity.title }}" width="150px"/></a></td>
+        </tr>
+        {% endif %}
+        <tr>
+            <th>{{ 'backend.quote.date'|trans }}</th>
+            <td>{{ entity.date|date('d.m.Y H:i') }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.quote.metatitle'|trans }}</th>
+            <td>{{ entity.metaTitle }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.quote.metadescription'|trans }}</th>
+            <td>{{ entity.metaDescription }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.quote.metakeywords'|trans }}</th>
+            <td>{{ entity.metaKeywords }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.quote.text'|trans }}</th>
+            <td>{{ entity.text }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_quote_index') }}">
+                {{ 'backend.quote.back_to_list'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_quote_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_quote_new') }}">
+                {{ 'backend.create'|trans }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

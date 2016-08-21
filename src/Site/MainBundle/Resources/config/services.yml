@@ -1,0 +1,51 @@
+services:
+    twig.extension.intl:
+            class: Twig_Extensions_Extension_Intl
+            tags:
+                - { name: twig.extension }
+    export.excel:
+      class: Site\MainBundle\Service\ClientService
+      arguments:
+          - "@service_container"
+          - "@doctrine.orm.entity_manager"
+
+    site.backend_menu_builder:
+        class: Site\MainBundle\Menu\BackendMenuBuilder
+        arguments: ["@knp_menu.factory"]
+
+    site.backend_main_menu:
+        class: Knp\Menu\MenuItem
+        factory: ["@site.backend_menu_builder", mainMenu]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: main_menu }
+
+    site.backend_user_menu:
+        class: Knp\Menu\MenuItem
+        factory: ["@site.backend_menu_builder", userMenu]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: user_menu }
+
+    site.frontend_menu_builder:
+        class: Site\MainBundle\Menu\FrontendMenuBuilder
+        arguments:
+            - "@knp_menu.factory"
+            - "@service_container"
+            - "@doctrine.orm.entity_manager"
+
+    site.frontend_main_menu:
+        class: Knp\Menu\MenuItem
+        factory: ["@site.frontend_menu_builder", mainMenu]
+        arguments:
+            - "@request_stack"
+        tags:
+            - { name: knp_menu.menu, alias: frontend_main_menu }
+
+    site.frontend_news_type_menu:
+        class: Knp\Menu\MenuItem
+        factory: ["@site.frontend_menu_builder", newsTypeMenu]
+        arguments:
+            - "@request_stack"
+        tags:
+            - { name: knp_menu.menu, alias: frontend_news_type_menu }

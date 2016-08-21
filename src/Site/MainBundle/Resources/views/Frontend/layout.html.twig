@@ -1,0 +1,49 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {% stylesheets
+    'bundles/sitemain/frontend/css/bootstrap.min.css'
+    'bundles/sitemain/frontend/css/theme.css'
+    filter='yui_css' %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div class="header container">
+        <a href="{{ path('frontend_homepage') }}"><img src="{{ asset('bundles/sitemain/frontend/images/logo.png') }}"></a>
+        <div class="brand">Республиканская политическая партия<br>&laquo;ЕДИНАЯ ОСЕТИЯ&raquo;</div>
+        <div class="search"><input type="text" name="" placeholder="Поиск по сайту"></div>
+    </div>
+    {% block nav %}
+    <div class="nav container">
+        {{ knp_menu_render('frontend_main_menu', { 'template': 'SiteMainBundle:Frontend/Menu:knp_menu.html.twig', 'style': 'navbar' }) }}
+    </div>
+    {% endblock %}
+    {% block content %}
+    <div class="container">
+        {% block main_content %}
+        {% endblock %}
+        {% block right_block %}
+        <div class="right-block">
+            <div class="quote-block">
+                Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад.<br>
+                <span class="author">Андрей Петрович</span>
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+    {% endblock %}
+    <div class="footer container">
+        Республика Южная Осетия, г. Цхинвал, улица Исака Харебова 18, тел.: 89298115511; &copy; 2012-2016, Партия &laquo;ЕДИНАЯ ОСЕТИЯ&raquo;. Все права защищены. При полном или частичном использовании материалов ссылка на ресурс обязательна. Дата создания сайта: 2016 г.
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    'bundles/sitemain/frontend/js/jquery-1.10.2.min.js'
+    filter='yui_js' %}
+    <script type="text/javascript" src="{{ asset_url }}" id="scripts"></script>
+    {% endjavascripts %}
+{% endblock %}

@@ -1,0 +1,39 @@
+backend_photo_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Photo:index" }
+
+backend_photo_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Photo:show" }
+
+backend_photo_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Photo:new" }
+
+backend_photo_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Photo:create" }
+    methods:  POST
+
+backend_photo_new_group:
+    path:     /group/new
+    defaults: { _controller: "SiteMainBundle:Backend/Photo:newGroup" }
+
+backend_photo_create_group:
+    path:     /group/create
+    defaults: { _controller: "SiteMainBundle:Backend/Photo:createGroup" }
+    methods:  POST
+
+backend_photo_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Photo:edit" }
+
+backend_photo_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Photo:update" }
+    methods:  [POST, PUT]
+
+backend_photo_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Photo:delete" }
+    methods:  [POST, DELETE]

@@ -1,0 +1,74 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.client.h1_show'|trans }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>{{ 'backend.client.fio'|trans }}</th>
+            <td>{{ entity.fio }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.client.phone'|trans }}</th>
+            <td>{{ entity.phone }}</td>
+        </tr> 
+        <tr>
+            <th>{{ 'backend.client.company'|trans }}</th>
+            <td>{{ entity.company }}</td>
+        </tr>  
+        <tr>
+            <th>{{ 'backend.client.email'|trans }}</th>
+            <td>{{ entity.email }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.client.hotel'|trans }}</th>
+            <td>{{ entity.hotel }}</td>
+        </tr>  
+        <tr>
+            <th>{{ 'backend.client.classRoom'|trans }}</th>
+            <td>{{ entity.classRoom }}</td>
+        </tr> 
+        <tr>
+            <th>{{ 'backend.client.meet'|trans }}</th>
+            <td>{% if entity.meet == 1 %}Да{% else %}Нет{% endif %}</td>
+        </tr>   
+        <tr>
+            <th>{{ 'backend.client.transport'|trans }}</th>
+            <td>{% if entity.transport == 1 %}Поезд{% else %}Самолет{% endif %}</td>
+        </tr>   
+        <tr>
+            <th>{{ 'backend.client.time'|trans }}</th>
+            <td>{% if entity.time|length > 0 %}{{ entity.time|date('H:i') }}{% endif %}</td>
+        </tr>    
+        <tr>
+            <th>{{ 'backend.client.station'|trans }}</th>
+            <td>{{ entity.station }}</td>
+        </tr> 
+        <tr>
+            <th>{{ 'backend.client.friends'|trans }}</th>
+            <td>{{ entity.friends }}</td>
+        </tr>                                                                 
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_client_index') }}">
+                {{ 'backend.client.back_to_list'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_client_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_client_new') }}">
+                {{ 'backend.create'|trans }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

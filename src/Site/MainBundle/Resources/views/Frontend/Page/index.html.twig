@@ -1,0 +1,57 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% from 'SiteMainBundle:Frontend/Album:macros.html.twig' import gridImages %}
+
+{% block title %}{{ page.metaTitle }}{% endblock %}
+{% block meta_description %}{{ page.metaDescription }}{% endblock %}
+{% block meta_keywords %}{{ page.metaKeywords }}{% endblock %}
+{% block og_title %}{{ page.metaTitle }}{% endblock %}
+{% block og_description %}{{ page.metaDescription }}{% endblock %}
+{% block og_url %}http://{{ app.request.host }}{{ app.request.requestUri }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% if page.slug == 'fotoarkhiv' %}
+	    {% stylesheets output='assets/compiled/frontend.css' filter='cssrewrite'
+	    '@SiteMainBundle/Resources/public/frontend/js/fancybox/source/jquery.fancybox.css'
+	    '@SiteMainBundle/Resources/public/frontend/js/fancybox/source/helpers/jquery.fancybox-buttons.css' %}
+	    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+	    {% endstylesheets %}
+    {% endif %}
+{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+	{% if page.slug == 'kontakty' %}
+<!--<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=yZGICqrQrEKU8-Xhl3T1NcObAOIF_PTx&amp;width=100%&amp;height=719&amp;lang=ru_RU&amp;sourceType=constructor&amp;scroll=true"></script>-->
+	{% endif %}
+
+	{% if page.slug == 'fotoarkhiv' %}
+	    <div class="albums">
+	        {{ gridImages(images) }}
+	    </div>
+	{% endif %}
+
+    {{ page.text|raw }}
+{% endblock %}
+
+{% block sidebar %}
+    {{ knp_menu_render('SiteMainBundle:FrontendMenuBuilder:sidebarMenu', { 'style': 'navbar' }) }}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{% if page.slug == 'fotoarkhiv' %}
+		<script type="text/javascript"
+	            src="{{ asset('bundles/sitemain/frontend/js/fancybox/source/jquery.fancybox.pack.js') }}"></script>
+	    <script type="text/javascript"
+	            src="{{ asset('bundles/sitemain/frontend/js/fancybox/source/helpers/jquery.fancybox-buttons.js') }}"></script>
+	    <script type="text/javascript"
+	            src="{{ asset('bundles/sitemain/frontend/js/fancybox/source/helpers/jquery.fancybox-media.js') }}"></script>
+	    <script type="text/javascript"
+	            src="{{ asset('bundles/sitemain/frontend/js/init.fancybox.js') }}"></script>       
+    {% endif %}             
+{% endblock %}

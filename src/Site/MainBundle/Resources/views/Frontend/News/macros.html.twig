@@ -1,0 +1,32 @@
+{% macro main(news) %}
+    <div class="overlay container">
+        <a href="{{ path('frontend_news_one', {type: news.getTypeUrl(), slug: news.slug}) }}">
+            <img src="{{ image(news.webPath).zoomCrop(1050, 390).jpeg(100) }}">
+            <div class="caption">
+                <span class="red">{{ news.date|localizeddate('long', 'none', null, null, 'd MMMM') }}</span><br>
+                <span class="black">{{ news.title }}</span>
+            </div>
+        </a>
+    </div>
+{% endmacro %}
+
+{% macro listTab(news, first = 0) %}
+    <div class="news">
+        {% for n in news %}
+            {% if first == 1 and loop.index == 1 %}
+            {% else %}
+                <a class="news-block" href="{{ path('frontend_news_one', {type: n.getTypeUrl(), slug: n.slug}) }}">
+                    <div class="cover"><img src="{{ image(n.webPath).zoomCrop(170, 190).jpeg(100) }}"></div>
+                    <div class="short-block">
+                        <div class="date">{{ n.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
+                        <div class="title">{{ n.title }}</div>
+                        <div class="content">{{ n.description }}</div>
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+        {% if news.count is defined %}
+        {{ knp_pagination_render(news) }}
+        {% endif %}
+    </div>
+{% endmacro %}

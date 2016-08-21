@@ -1,0 +1,24 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.user.h1_edit'|trans }}</h1>
+
+    {{ form(delete_form) }}
+
+    {{ form_start(edit_form, { 'style': 'horizontal' , attr: {novalidate: 'novalidate'} }) }}
+    {{ form_row(edit_form.username) }}
+    {{ form_row(edit_form.email) }}
+    {{ form_row(edit_form.enabled) }}
+    {{ form_end(edit_form) }}
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_user_index') }}">
+                {{ 'backend.user.back_to_list'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_user_change_password', { 'id': entity.id }) }}">{{ 'backend.user.change_password'|trans }}</a>
+        </li>
+    </ul>
+{% endblock %}

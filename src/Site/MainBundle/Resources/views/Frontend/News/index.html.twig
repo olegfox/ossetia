@@ -1,0 +1,14 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% from 'SiteMainBundle:Frontend/News:macros.html.twig' import listTab %}
+
+{% block title %}{{ 'frontend.news.title'|trans({}, 'menu') }} | {{ ('frontend.news.type.'~app.request.get('type'))|trans({}, 'menu') }}{% endblock %}
+
+{% block nav %}
+    {{ parent() }}
+    {{ knp_menu_render('frontend_news_type_menu', { 'template': 'SiteMainBundle:Frontend/Menu:knp_menu.html.twig', 'style': 'navbar' }) }}
+{% endblock %}
+
+{% block main_content %}
+    {{ listTab(news) }}
+{% endblock %}

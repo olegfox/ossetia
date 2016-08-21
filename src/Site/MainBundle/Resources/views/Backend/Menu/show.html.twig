@@ -1,0 +1,46 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.menu.h1_show'|trans }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>{{ 'backend.menu.parent'|trans }}</th>
+            <td>{{ entity.parent }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.menu.page'|trans }}</th>
+            <td>{{ entity.page }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.menu.title'|trans }}</th>
+            <td>{{ entity.title }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.menu.position'|trans }}</th>
+            <td>{{ entity.position }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_menu_index') }}">
+                {{ 'backend.menu.back_to_list'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_menu_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_menu_new') }}">
+                {{ 'backend.create'|trans }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

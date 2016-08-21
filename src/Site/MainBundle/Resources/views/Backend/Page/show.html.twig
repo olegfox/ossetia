@@ -1,0 +1,46 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.page.h1_show'|trans }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>{{ 'backend.page.title'|trans }}</th>
+            <td>{{ entity.title }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.page.metatitle'|trans }}</th>
+            <td>{{ entity.metaTitle }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.page.metadescription'|trans }}</th>
+            <td>{{ entity.metaDescription }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.page.metakeywords'|trans }}</th>
+            <td>{{ entity.metaKeywords }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_page_index') }}">
+                {{ 'backend.page.back_to_list'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_page_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_page_new') }}">
+                {{ 'backend.create'|trans }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

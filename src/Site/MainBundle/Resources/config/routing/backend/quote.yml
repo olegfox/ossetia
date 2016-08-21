@@ -1,0 +1,30 @@
+backend_quote_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Quote:index" }
+
+backend_quote_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Quote:show" }
+
+backend_quote_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Quote:new" }
+
+backend_quote_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Quote:create" }
+    methods:  POST
+
+backend_quote_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Quote:edit" }
+
+backend_quote_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Quote:update" }
+    methods:  [POST, PUT]
+
+backend_quote_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Quote:delete" }
+    methods:  [POST, DELETE]

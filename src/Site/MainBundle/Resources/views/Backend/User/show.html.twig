@@ -1,0 +1,38 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.user.h1_show'|trans }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>{{ 'backend.user.email'|trans }}</th>
+            <td>{{ entity.email }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.user.username'|trans }}</th>
+            <td>{{ entity.username }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_user_index') }}">
+                {{ 'backend.user.back_to_list'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_user_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_user_new') }}">
+                {{ 'backend.create'|trans }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

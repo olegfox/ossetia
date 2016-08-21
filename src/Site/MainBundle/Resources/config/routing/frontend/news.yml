@@ -1,0 +1,11 @@
+frontend_news_index:
+    path:     /{type}
+    defaults: { _controller: "SiteMainBundle:Frontend/News:index" }
+    requirements:
+      type: official|quickly|meeting|point_view|analytics
+
+frontend_news_one:
+    path:     /{type}/{slug}
+    defaults: { _controller: "SiteMainBundle:Frontend/News:one" }
+    requirements:
+      type: official|quickly|meeting|point_view|analytics

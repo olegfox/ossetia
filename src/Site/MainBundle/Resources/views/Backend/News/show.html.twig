@@ -1,0 +1,72 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.news.h1_show'|trans }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>{{ 'backend.news.title'|trans }}</th>
+            <td>{{ entity.title }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.news.description'|trans }}</th>
+            <td>{{ entity.description }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.news.img'|trans }}</th>
+            <td><a href="{{ asset(entity.webPath) }}" target="_blank"><img src="{{ image(entity.webPath).resize(150) }}" alt="{{ entity.title }}" width="150px"/></a></td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.news.date'|trans }}</th>
+            <td>{{ entity.date|date('d.m.Y H:i') }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.news.type'|trans }}</th>
+            <td>{{ entity.getTypeText()|trans }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.news.metatitle'|trans }}</th>
+            <td>{{ entity.metaTitle }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.news.metadescription'|trans }}</th>
+            <td>{{ entity.metaDescription }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.news.metakeywords'|trans }}</th>
+            <td>{{ entity.metaKeywords }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.news.photos'|trans }}</th>
+            <td>
+                <div class="galery">
+                    {% for photo in entity.photos %}
+                        <a href="{{ asset(photo.link) }}" target="_blank"><img src="{{ image(photo.link).zoomCrop(50, 50) }}" alt="{{ image(photo.link).zoomCrop(50, 50) }}"/></a>
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_news_index') }}">
+                {{ 'backend.news.back_to_list'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_news_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_news_new') }}">
+                {{ 'backend.create'|trans }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

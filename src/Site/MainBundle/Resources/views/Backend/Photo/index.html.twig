@@ -1,0 +1,53 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.photo.h1_list'|trans }}</h1>
+
+    {% if entities|length > 0 %}
+        <table class="records_list table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{ 'backend.photo.img'|trans }}</th>
+                <th>{{ 'backend.actions'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('backend_photo_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td><a href="{{ asset(entity.webPath) }}" target="_blank"><img src="{{ image(entity.webPath).resize(150) }}" alt="{{ image(entity.webPath).resize(150) }}" width="150px"/></a></td>
+                    <td>
+                        <ul class="nav nav-pills">
+                            <li>
+                                <a href="{{ path('backend_photo_show', { 'id': entity.id }) }}">{{ 'backend.show'|trans }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('backend_photo_edit', { 'id': entity.id }) }}">{{ 'backend.edit'|trans }}</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {{ knp_pagination_render(entities) }}
+    {% else %}
+        <div class="alert alert-warning">
+            {{ 'backend.photo.empty_list'|trans }}
+        </div>
+    {% endif %}
+
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="{{ path('backend_photo_new') }}">
+                {{ 'backend.create'|trans }}
+            </a>
+        </li>
+        <li class="active">
+            <a href="{{ path('backend_photo_new_group') }}">
+                {{ 'backend.create_group'|trans }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

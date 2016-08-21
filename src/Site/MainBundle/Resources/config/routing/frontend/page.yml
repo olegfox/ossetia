@@ -1,0 +1,7 @@
+frontend_page_index:
+    path:     /{slug}
+    defaults: { _controller: "SiteMainBundle:Frontend/Page:index" }
+
+frontend_subpage_index:
+    path:     /{parent}/{slug}
+    defaults: { _controller: "SiteMainBundle:Frontend/Page:index" }

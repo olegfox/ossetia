@@ -1,0 +1,30 @@
+backend_news_paper_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/NewsPaper:index" }
+
+backend_news_paper_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/NewsPaper:show" }
+
+backend_news_paper_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/NewsPaper:new" }
+
+backend_news_paper_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/NewsPaper:create" }
+    methods:  POST
+
+backend_news_paper_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/NewsPaper:edit" }
+
+backend_news_paper_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/NewsPaper:update" }
+    methods:  [POST, PUT]
+
+backend_news_paper_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/NewsPaper:delete" }
+    methods:  [POST, DELETE]

@@ -1,0 +1,41 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.quote.h1_edit'|trans }}</h1>
+
+    {{ form(delete_form) }}
+
+    {{ form_start(edit_form, { 'style': 'horizontal' , attr: {novalidate: 'novalidate'} }) }}
+    {{ form_row(edit_form.title) }}
+    {{ form_row(edit_form.date) }}
+    {{ form_row(edit_form.metaTitle) }}
+    {{ form_row(edit_form.metaDescription) }}
+    {{ form_row(edit_form.metaKeywords) }}
+    {{ form_row(edit_form.text) }}
+    {% if entity.img|length > 0 %}
+        <div class="form-group">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-10">
+                <a href="{{ asset(entity.webPath) }}" target="_blank" class="img-thumbnail"><img src="{{ image(entity.webPath).resize(150) }}" alt="{{ entity.title }}" width="150px"/></a>
+                <br/>
+                <br/>
+            </div>
+        </div>
+    {% endif %}
+    <div class="form-group" {% if entity.img|length == 0 %}style="display: none;" {% endif %}>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-10">
+            {{ form_widget(edit_form.img) }}
+        </div>
+    </div>
+    {{ form_row(edit_form.file) }}
+    {{ form_end(edit_form) }}
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_quote_index') }}">
+                {{ 'backend.quote.back_to_list'|trans }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.slider.h1_show'|trans }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.slider.position'|trans }}</th>
+            <td>{{ entity.position }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.slider.img'|trans }}</th>
+            <td>{% if entity.webPath|length > 0 %}<a href="{{ asset(entity.webPath) }}" target="_blank"><img src="{{ image(entity.webPath).resize(150) }}" alt="{{ image(entity.webPath).resize(150) }}" width="150px"/></a>{% endif %}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.slider.main'|trans }}</th>
+            <td>{{ (entity.main ? 'backend.slider.main_yes' : 'backend.slider.main_no')|trans }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_slider_index') }}">
+                {{ 'backend.slider.back_to_list'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_slider_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_slider_new') }}">
+                {{ 'backend.create'|trans }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

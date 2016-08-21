@@ -1,0 +1,11 @@
+frontend_homepage:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Frontend/Main:index" }
+
+frontend_page:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/page.yml"
+    prefix:   /page
+
+frontend_news:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/news.yml"
+    prefix: /novosti

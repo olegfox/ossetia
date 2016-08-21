@@ -1,0 +1,44 @@
+Site\MainBundle\Entity\Page:
+    properties:
+        title:
+            - NotBlank:
+                message: "Заголовок не может быть пустым"
+
+Site\MainBundle\Entity\Menu:
+    properties:
+        title:
+            - NotBlank:
+                message: "Заголовок не может быть пустым"
+
+Site\MainBundle\Entity\Quote:
+    properties:
+        title:
+            - NotBlank:
+                message: "Вы не заполнили поле автор"
+        date:
+            - NotBlank:
+                message: "Вы не выбрали дату"
+
+
+Site\MainBundle\Entity\NewsPaper:
+    properties:
+        title:
+            - NotBlank:
+                message: "Вы не заполнили поле заголовок"
+        date:
+            - NotBlank:
+                message: "Вы не выбрали дату"
+
+Site\MainBundle\Entity\User:
+    properties:
+        username:
+            - NotBlank:
+                message: "Вы не заполнили поле Имя пользователя"
+        email:
+            - NotBlank:
+                message: "Вы не заполнили поле Электронная почта"
+            - Email:
+                message: "Вы ввели не корректный адрес электронной почты"
+        plainPassword:
+            - NotBlank:
+                message: "Вы не ввели пароль"

@@ -1,0 +1,16 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% block title %}{{ 'frontend.news.title'|trans({}, 'menu') }} | {{ news.metaTitle }}{% endblock %}
+{% block meta_description %}{{ news.metaDescription }}{% endblock %}
+{% block meta_keywords %}{{ news.metaKeywords }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

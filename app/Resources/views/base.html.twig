@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html {% block html %}{% endblock %}>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=1000, user-scalable=yes">
+        <title>{% block title %}Единая Осетия{% endblock %}</title>
+        <meta name="Description" content="{% block meta_description %}{% endblock %}">
+        <meta name="Keywords" content="{% block meta_keywords %}{% endblock %}">
+        <meta property="og:title" content="{% block og_title %}{% endblock %}"/>
+        <meta property="og:description" content="{% block og_description %}{% endblock %}"/>
+        <meta property="og:image" content="{% block og_image %}{% endblock %}"/>
+        <meta property="og:url" content="{% block og_url %}{% endblock %}" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:site_name" content="Единая Осетия" />
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %} 5
+    </body>
+</html>
