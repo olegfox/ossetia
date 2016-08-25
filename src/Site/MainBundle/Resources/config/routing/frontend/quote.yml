@@ -1,0 +1,7 @@
+frontend_quote_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Frontend/Quote:index" }
+
+frontend_quote_one:
+    path:     /{slug}
+    defaults: { _controller: "SiteMainBundle:Frontend/Quote:one" }

@@ -49,3 +49,11 @@ services:
             - "@request_stack"
         tags:
             - { name: knp_menu.menu, alias: frontend_news_type_menu }
+
+    site.frontend_sub_menu:
+        class: Knp\Menu\MenuItem
+        factory: ["@site.frontend_menu_builder", subMenu]
+        arguments:
+            - "@request_stack"
+        tags:
+            - { name: knp_menu.menu, alias: frontend_sub_menu }

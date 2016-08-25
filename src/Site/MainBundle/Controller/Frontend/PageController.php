@@ -23,11 +23,11 @@ class PageController extends Controller
             "page" => $page
         );
 
-        if ($slug == 'fotoarkhiv') {
-            $repository_photo = $this->getDoctrine()->getRepository('SiteMainBundle:Photo');
+        if ($slug == 'fotoghalieriei') {
+            $repository_media = $this->getDoctrine()->getRepository('SiteMainBundle:Media');
 
             $params = array_merge($params, array(
-                'images' => $repository_photo->findAll()
+                'media' => $repository_media->findPhoto()
             ));
         }
 

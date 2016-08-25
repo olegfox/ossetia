@@ -2,7 +2,9 @@
 
 {% from 'SiteMainBundle:Frontend/News:macros.html.twig' import listTab %}
 
-{% block title %}{{ 'frontend.news.title'|trans({}, 'menu') }} | {{ ('frontend.news.type.'~app.request.get('type'))|trans({}, 'menu') }}{% endblock %}
+{% block title %}{{ page.metaTitle }}{% endblock %}
+{% block meta_description %}{{ page.metaDescription }}{% endblock %}
+{% block meta_keywords %}{{ page.metaKeywords }}{% endblock %}
 
 {% block nav %}
     {{ parent() }}

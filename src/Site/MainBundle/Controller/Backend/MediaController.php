@@ -4,6 +4,7 @@ namespace Site\MainBundle\Controller\Backend;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Site\MainBundle\Entity\Media;
 use Site\MainBundle\Entity\MediaVideo;
@@ -22,7 +23,7 @@ class MediaController extends Controller
      * Lists all Media entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -31,7 +32,7 @@ class MediaController extends Controller
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $entities,
-            $this->get('request')->query->get('page', 1) /*page number*/,
+            $request->query->get('page', 1) /*page number*/,
             10/*limit per page*/
         );
 
@@ -105,12 +106,12 @@ class MediaController extends Controller
      */
     private function createCreateForm(Media $entity)
     {
-        $form = $this->createForm(new MediaType(), $entity, array(
+        $form = $this->createForm(MediaType::class, $entity, array(
             'action' => $this->generateUrl('backend_media_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'backend.create'));
+        $form->add('submit', SubmitType::class, array('label' => 'backend.create'));
 
         return $form;
     }
@@ -191,12 +192,12 @@ class MediaController extends Controller
             $entity->setVideoUrl($entity->getVideo()->getLink());
         }
 
-        $form = $this->createForm(new MediaType(), $entity, array(
+        $form = $this->createForm(MediaType::class, $entity, array(
             'action' => $this->generateUrl('backend_media_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'backend.update'));
+        $form->add('submit', SubmitType::class, array('label' => 'backend.update'));
 
         return $form;
     }
@@ -345,7 +346,7 @@ class MediaController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('backend_media_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array(
+            ->add('submit', SubmitType::class, array(
                 'label' => 'backend.delete',
                 'translation_domain' => 'menu',
                 'attr' => array(

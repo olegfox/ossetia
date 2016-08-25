@@ -11,6 +11,7 @@
     {{ form(delete_form) }}
 
     {{ form_start(edit_form, { 'style': 'horizontal' , attr: {novalidate: 'novalidate'} }) }}
+    {{ form_row(edit_form.created) }}
     {{ form_row(edit_form.title) }}
     {{ form_row(edit_form.description) }}
     {{ form_row(edit_form.file) }}

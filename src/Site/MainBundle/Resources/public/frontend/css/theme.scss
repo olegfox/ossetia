@@ -1,86 +1,106 @@
+$browser-context: 14;
+
+$color-base: #000;
+$color-link: #8d0b1b;
+$color-link--active: #f6a827;
+$color-link-subnav: #1627a0;
+
+@function em($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em;
+}
+
 html,
 body {
   font-family: 'PT Sans', sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: $browser-context+px;
   background-color: #e9e9e9;
   min-height: 100%;
-  height: 100%; }
+  height: 100%;
+}
 
 .wrap {
   min-height: 100%;
-  padding-bottom: 154px; }
+  padding-bottom: 154px;
+}
 
 .container {
   width: 1050px;
   margin: auto;
-  padding: 0; }
-
+  padding: 0;
+}
 .header {
-  margin-top: 30px; }
-
+  margin-top: 30px;
+}
 .header img {
-  float: left; }
+  float: left;
+}
 
 .header .brand {
   display: table-cell;
-  font-size: 1.92857em;
-  line-height: 1.21429em;
+  font-size: em(27);
+  line-height: em(17);
   text-align: center;
   padding-top: 35px;
   margin: auto;
   width: 100%;
-  color: #000; }
-  .header .brand:hover, .header .brand:active {
+  color: $color-base;
+  &:hover,
+  &:active {
     text-decoration: none;
-    color: #000; }
-
+    color: $color-base;
+  }
+}
 .header .search {
   height: 140px;
   display: table-cell;
-  vertical-align: middle; }
-
+  vertical-align: middle;
+}
 .header input {
   border: 1px solid #ccc;
-  font-size: 1.42857em;
+  font-size: em(20);
   float: right;
   width: 178px;
-  padding: 1px 11px; }
-  .header input:focus {
-    outline: 0; }
-
+  padding: 1px 11px;
+  &:focus {
+    outline: 0;
+  }
+}
 .nav {
   clear: both;
   height: 59px;
   padding: 11px 0;
   text-align: justify;
-  overflow: hidden; }
-
+  overflow: hidden;
+}
 .nav a {
   display: inline-block;
-  font-size: 1.42857em;
-  color: #8d0b1b;
-  text-decoration: underline; }
-  .nav a:hover, .nav a:active, .nav a.current {
-    color: #f6a827; }
-
+  font-size: em(20);
+  color: $color-link;
+  text-decoration: underline;
+  &:hover,
+  &:active,
+  &.current{
+    color: $color-link--active;
+  }
+}
 .nav:after {
   display: inline-block;
-  width: 100%; }
-
+  width: 100%;
+}
 .subnav {
   height: 42px;
-  text-align: left; }
-
-.subnav a {
-  font-size: 1.28571em;
-  color: #1627a0;
   text-align: left;
-  margin-right: 10px; }
-
+}
+.subnav a {
+  font-size: em(18);
+  color: $color-link-subnav;
+  text-align: left;
+  margin-right: 10px;
+}
 .overlay {
-  position: relative; }
-
+  position: relative;
+}
 .caption {
   display: block;
   position: absolute;
@@ -89,140 +109,144 @@ body {
   font-size: 36px;
   font-weight: 600;
   color: #fff;
-  line-height: 55px; }
-
+  line-height: 55px
+}
 .caption .red {
-  background-color: #8d0b1b; }
-
+  background-color: $color-link;
+}
 .caption .black {
-  background-color: #000; }
-
+  background-color: $color-base;
+}
 .news {
   padding-top: 20px;
   width: 740px;
   float: left;
-  padding-right: 20px; }
-
+  padding-right: 20px;
+}
 .news .news-block {
   display: block;
   margin-bottom: 20px;
   text-decoration: none;
-  min-height: 190px; }
-
+  min-height: 190px;
+}
 .news .cover {
   float: left;
   display: inline;
-  margin-right: 16px; }
-
+  margin-right: 16px;
+}
 .news .cover img {
   width: 170px;
-  height: 190px; }
-
+  height: 190px;
+}
 .news .short-block {
   display: inline;
-  vertical-align: top; }
-  .news .short-block:hover .title {
-    color: #1627a0; }
-
+  vertical-align: top;
+  &:hover {
+    .title {
+      color: $color-link-subnav;
+    }
+  }
+}
 .news-block .short-block .date {
-  color: #8d0b1b;
-  font-size: 1em;
-  margin-top: -4px; }
-
+  color: $color-link;
+  font-size: em(14);
+  margin-top: -4px;
+}
 .news-block .short-block .title {
-  font-size: 1.42857em;
+  font-size: em(20);
   line-height: 26px;
   margin-top: 7px;
   margin-bottom: 10px;
-  color: #000; }
-
+  color: $color-base;
+}
 .news-block .short-block .content {
-  color: #000;
-  line-height: 1.21429em; }
-
+  color: $color-base;
+  line-height: em(17);
+}
 .right-block {
   width: 310px;
   padding-top: 20px;
-  float: left; }
-
+  float: left;
+}
 .right-block .quote-block {
   border: 2px solid #fff;
   padding: 20px;
   text-align: center;
   font-weight: 600;
-  line-height: 1.28571em;
-  font-size: 1.14286em; }
-
+  line-height: em(18);
+  font-size: em(16);
+}
 .right-block .quote-block .author {
   display: inline-block;
-  color: #8d0b1b;
+  color: $color-link;
   font-size: 1em;
-  margin-top: 6px; }
-
+  margin-top: 6px;
+}
 .view-point {
   clear: both;
   background-color: #d8d8d8;
-  padding-bottom: 40px; }
-
+  padding-bottom: 40px;
+}
 .view-point h2 {
   text-align: center;
-  font-size: 1.71429em;
-  margin-bottom: 21px; }
-
+  font-size: em(24);
+  margin-bottom: 21px;
+}
 .view-point .view-point-blocks {
   text-align: justify;
   font-size: 0;
-  margin: 0 -30px; }
-
+  margin: 0 -30px;
+}
 .view-point .view-point-blocks:after {
   display: inline-block;
-  width: 100%; }
-
+  width: 100%;
+}
 .view-point .wrap-view-point-block {
   display: inline-block;
   width: 33.33%;
-  text-decoration: none; }
-  .view-point .wrap-view-point-block:hover {
-    color: #000; }
-
+  text-decoration: none;
+  &:hover {
+    color: $color-base;
+  }
+}
 .view-point .view-point-block {
   text-align: center;
   border: 2px solid #fff;
   padding: 40px 35px 15px;
   margin: 0 30px;
   font-weight: 600;
-  line-height: 22px; }
-
+  line-height: 22px;
+}
 .view-point .view-point-block p {
   font-size: 16px;
   line-height: 21px;
   font-weight: 600;
-  color: #000; }
-
+  color: $color-base;
+}
 .view-point .view-point-block img {
-  margin: 18px 0; }
-
+  margin: 18px 0;
+}
 .view-point .view-point-block .author {
-  color: #8d0b1b;
-  font-size: 16px; }
-
+  color: $color-link;
+  font-size: 16px;
+}
 .footer {
   width: 100%;
   padding: 40px 0;
   text-align: center;
-  font-size: 1.14286em;
+  font-size: em(16);
   background-color: #fff;
-  margin-top: -154px; }
-  .footer--inner {
+  margin-top: -154px;
+  &--inner {
     max-width: 1050px;
-    margin: 0 auto; }
-
+    margin: 0 auto;
+  }
+}
 .img-circle1 {
   height: 100px;
   width: 100px;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   border-radius: 50px;
-  behavior: url(/bundles/sitemain/frontend/css/border-radius-ie8.htc); }
-
-/*# sourceMappingURL=theme.css.map */
+  behavior: url(/bundles/sitemain/frontend/css/border-radius-ie8.htc);
+}

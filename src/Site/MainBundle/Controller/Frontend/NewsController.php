@@ -10,6 +10,7 @@ class NewsController extends Controller
     public function indexAction(Request $request, $type)
     {
         $repository = $this->getDoctrine()->getRepository('SiteMainBundle:News');
+        $repositoryPage = $this->getDoctrine()->getRepository('SiteMainBundle:Page');
 
         $news = $repository->findType($type);
 
@@ -20,8 +21,11 @@ class NewsController extends Controller
             5/*limit per page*/
         );
 
+        $page = $repositoryPage->findOneBy(array('slug' => 'novosti'));
+
         $params = array(
-            'news' => $pagination
+            'news' => $pagination,
+            'page' => $page
         );
 
         return $this->render('SiteMainBundle:Frontend/News:index.html.twig', $params);

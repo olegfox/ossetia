@@ -28,6 +28,7 @@ class BackendMenuBuilder
         $menu->addChild('Новости', array('route' => 'backend_news_index'));
         $menu->addChild('Цитаты', array('route' => 'backend_quote_index'));
         $menu->addChild('Публикации', array('route' => 'backend_news_paper_index'));
+        $menu->addChild('Медиа', array('route' => 'backend_media_index'));
         $menu->addChild('Пользователи', array('route' => 'backend_user_index'));
 
         return $menu;

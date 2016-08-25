@@ -29,6 +29,18 @@ class MediaRepository extends EntityRepository
         return $allMedia;
     }
 
+    public function findPhoto()
+    {
+        $media = $this->getEntityManager()->createQuery('
+        SELECT m FROM Site\MainBundle\Entity\Media m
+        LEFT JOIN m.photos AS photo
+        ORDER BY m.created DESC
+        ')
+            ->getResult();
+
+        return $media;
+    }
+
     public function findAllWithoutSlug($slug, $limit)
     {
         $allMedia = $this->getEntityManager()->createQuery('

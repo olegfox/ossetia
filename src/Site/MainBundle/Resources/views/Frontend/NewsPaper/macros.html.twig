@@ -1,0 +1,17 @@
+{% macro listTab(newsPapers) %}
+    <div class="news">
+        {% for newsPaper in newsPapers %}
+            <a class="news-block" href="{{ path('frontend_news_paper_one', {slug: newsPaper.slug}) }}">
+                <div class="cover"><img src="{{ image(newsPaper.webPath).zoomCrop(170, 190).jpeg(100) }}"></div>
+                <div class="short-block">
+                    <div class="date">{{ newsPaper.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
+                    <div class="title">{{ newsPaper.title }}</div>
+                    <div class="content">{{ newsPaper.description }}</div>
+                </div>
+            </a>
+        {% endfor %}
+        {% if newsPapers.count is defined %}
+            {{ knp_pagination_render(newsPapers) }}
+        {% endif %}
+    </div>
+{% endmacro %}

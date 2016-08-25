@@ -9,3 +9,11 @@ frontend_page:
 frontend_news:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/news.yml"
     prefix: /novosti
+
+frontend_quote:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/quote.yml"
+    prefix: /tsitaty
+
+frontend_news_paper:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/news_paper.yml"
+    prefix: /gaziety

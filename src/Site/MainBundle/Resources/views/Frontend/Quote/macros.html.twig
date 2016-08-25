@@ -4,15 +4,33 @@
             <h2>Точка зрения</h2>
             <div class="view-point-blocks">
                 {% for quote in quotes %}
-                    <div class="wrap-view-point-block">
+                    <a href="{{ path('frontend_quote_one', {slug: quote.slug}) }}" class="wrap-view-point-block">
                         <div class="view-point-block">
                             {{ quote.text|raw }}
                             <img src="{{ image(quote.webPath).zoomCrop(90, 90).jpeg(100) }}" class="img-circle1"><br>
                             <span class="author">{{ quote.title }}</span>
                         </div>
-                    </div>
+                    </a>
                 {% endfor %}
             </div>
         </div>
+    </div>
+{% endmacro %}
+
+{% macro listTab(quotes) %}
+    <div class="news">
+        {% for quote in quotes %}
+            <a class="news-block" href="{{ path('frontend_quote_one', {slug: quote.slug}) }}">
+                <div class="cover"><img src="{{ image(quote.webPath).zoomCrop(170, 190).jpeg(100) }}"></div>
+                <div class="short-block">
+                    <div class="date">{{ quote.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
+                    <div class="title">{{ quote.title }}</div>
+                    <div class="content">{{ quote.text|raw }}</div>
+                </div>
+            </a>
+        {% endfor %}
+        {% if quotes.count is defined %}
+            {{ knp_pagination_render(quotes) }}
+        {% endif %}
     </div>
 {% endmacro %}

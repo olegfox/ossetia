@@ -5,6 +5,9 @@ namespace Site\MainBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
 class MediaType extends AbstractType
 {
@@ -15,6 +18,10 @@ class MediaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('created', null, array(
+                'required' => false,
+                'label' => 'backend.media.created'
+            ))
             ->add('title', null, array(
                 'required' => false,
                 'label' => 'backend.media.title'
@@ -23,7 +30,7 @@ class MediaType extends AbstractType
                 'required' => false,
                 'label' => 'backend.media.description'
             ))
-            ->add('file', 'file', array(
+            ->add('file', FileType::class, array(
                 'required' => false,
                 'label' => 'backend.media.preview'
             ))
@@ -31,7 +38,7 @@ class MediaType extends AbstractType
                 'required' => false,
                 'label' => 'backend.media.metaTitle'
             ))
-            ->add('metaDescription', 'textarea', array(
+            ->add('metaDescription', TextareaType::class, array(
                 'required' => false,
                 'label' => 'backend.media.metaDescription'
             ))
@@ -39,11 +46,11 @@ class MediaType extends AbstractType
                 'required' => false,
                 'label' => 'backend.media.metaKeywords'
             ))
-            ->add('videoUrl', 'url', array(
+            ->add('videoUrl', UrlType::class, array(
                 'required' => false,
                 'label' => 'backend.media.video'
             ))
-            ->add('gallery', 'file', array(
+            ->add('gallery', FileType::class, array(
                 'required' => false,
                 'label' => 'backend.media.photos',
                 'attr' => array(
@@ -51,7 +58,7 @@ class MediaType extends AbstractType
                     'multiple' => true
                 )
             ))
-            ->add('text', 'textarea', array(
+            ->add('text', TextareaType::class, array(
                 'required' => false,
                 'label' => 'backend.media.text',
                 "attr" => array(
@@ -67,8 +74,7 @@ class MediaType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Site\MainBundle\Entity\Media',
-            'translation_domain' => 'menu'
+            'data_class' => 'Site\MainBundle\Entity\Media'
         ));
     }
 
