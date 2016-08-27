@@ -7,6 +7,17 @@
 {% block og_description %}{{ page.metaDescription }}{% endblock %}
 {% block og_url %}http://{{ app.request.host }}{{ app.request.requestUri }}{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% if page.slug == "fotoghalieriei" or page.slug == "vidieoghalieriei" %}
+        {% stylesheets
+        'bundles/sitemain/frontend/css/gallery.css'
+        filter='yui_css' %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+        {% endstylesheets %}
+    {% endif %}
+{% endblock %}
+
 {% block head %}
     {{ parent() }}
 {% endblock %}
@@ -17,5 +28,16 @@
 {% endblock %}
 
 {% block content %}
-    {{ page.text|raw }}
+    <div class="container">
+        {{ page.text|raw }}
+        {% if page.slug == "fotoghalieriei" %}
+            {{ render(url('frontend_photo_index', {'page': app.request.query.get('page')} )) }}
+        {% endif %}
+        {% if page.slug == "vidieoghalieriei" %}
+            {{ render(url('frontend_video_index', {'page': app.request.query.get('page')} )) }}
+        {% endif %}
+        {% if page.slug == "novosti-1" %}
+            {{ render(url('frontend_ajax_index', {'page': app.request.query.get('page')} )) }}
+        {% endif %}
+    </div>
 {% endblock %}

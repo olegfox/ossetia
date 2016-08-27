@@ -21,7 +21,7 @@ body {
 
 .wrap {
   min-height: 100%;
-  padding-bottom: 154px;
+  padding-bottom: 124px;
 }
 
 .container {
@@ -122,6 +122,10 @@ body {
   width: 740px;
   float: left;
   padding-right: 20px;
+  &--all {
+    width: auto;
+    padding-right: 0;
+  }
 }
 .news .news-block {
   display: block;
@@ -205,6 +209,7 @@ body {
   display: inline-block;
   width: 33.33%;
   text-decoration: none;
+  vertical-align: top;
   &:hover {
     color: $color-base;
   }
@@ -236,7 +241,7 @@ body {
   text-align: center;
   font-size: em(16);
   background-color: #fff;
-  margin-top: -154px;
+  margin-top: -124px;
   &--inner {
     max-width: 1050px;
     margin: 0 auto;
@@ -250,3 +255,4 @@ body {
   border-radius: 50px;
   behavior: url(/bundles/sitemain/frontend/css/border-radius-ie8.htc);
 }
+

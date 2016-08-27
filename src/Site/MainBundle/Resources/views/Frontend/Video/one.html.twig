@@ -1,0 +1,20 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% block title %}{{ media.metaTitle }}{% endblock %}
+{% block meta_description %}{{ media.metaDescription }}{% endblock %}
+{% block meta_keywords %}{{ media.metaKeywords }}{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets
+    'bundles/sitemain/frontend/css/gallery.css'
+    filter='yui_css' %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

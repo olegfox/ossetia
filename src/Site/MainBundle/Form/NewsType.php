@@ -39,6 +39,14 @@ class NewsType extends AbstractType
                     'backend.news.type_choice.analytics' => 4,
                 )
             ))
+            ->add('flag', ChoiceType::class, array(
+                'required' => true,
+                'label' => 'backend.news.flag',
+                'choices' => array(
+                    'backend.news.flag_choice.type1' => 0,
+                    'backend.news.flag_choice.type2' => 1
+                )
+            ))
             ->add('metaTitle', TextType::class, array(
                 'required' => false,
                 'label' => 'backend.news.metatitle'

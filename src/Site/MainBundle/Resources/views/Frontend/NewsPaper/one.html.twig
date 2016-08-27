@@ -9,6 +9,23 @@
 {% endblock %}
 
 {% block content %}
+    <div class="container">
+        <h1>{{ newsPaper.title }}</h1>
+        <div class="news news--all">
+            <div class="news-block">
+                <div class="cover"><img src="{{ image(newsPaper.webPath).zoomCrop(170, 190).jpeg(100) }}"></div>
+                <div class="short-block">
+                    <div class="date">{{ newsPaper.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
+                    <div class="content">
+                        {% if newsPaper.document|length > 0 %}
+                            <a href="{{ newsPaper.webPathDocument }}" download>СКАЧАТЬ ГАЗЕТУ</a>
+                        {% endif %}
+                        {{ newsPaper.text|raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}

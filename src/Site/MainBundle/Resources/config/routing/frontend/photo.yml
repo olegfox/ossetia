@@ -1,0 +1,7 @@
+frontend_photo_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Frontend/Photo:index" }
+
+frontend_photo_one:
+    path:     /slug
+    defaults: { _controller: "SiteMainBundle:Frontend/Photo:one" }

@@ -9,6 +9,18 @@
 {% endblock %}
 
 {% block content %}
+    <div class="container">
+        <h1>{{ news.title }}</h1>
+        <div class="news news--all">
+            <div class="news-block">
+                <div class="cover"><img src="{{ image(news.webPath).zoomCrop(170, 190).jpeg(100) }}"></div>
+                <div class="short-block">
+                    <div class="date">{{ news.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
+                    <div class="content">{{ news.text|raw }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}

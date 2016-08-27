@@ -47,6 +47,11 @@ class News
     private $type = 0;
 
     /**
+     * @ORM\Column(type="smallint", nullable=false)
+     */
+    private $flag = 0;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="meta_title", type="string", length=100, nullable=true)
@@ -486,6 +491,21 @@ class News
         }
     }
 
+    public function getFlagText()
+    {
+        switch($this->type){
+            case 0: {
+                return 'backend.news.flag_choice.type1';
+            }break;
+            case 1: {
+                return 'backend.news.flag_choice.type2';
+            }break;
+            default: {
+                return 'backend.news.type_choice.official';
+            }break;
+        }
+    }
+
     public function getTypeUrl()
     {
         switch($this->type){
@@ -508,5 +528,29 @@ class News
                 return 'official';
             }break;
         }
+    }
+
+    /**
+     * Set flag
+     *
+     * @param integer $flag
+     *
+     * @return News
+     */
+    public function setFlag($flag)
+    {
+        $this->flag = $flag;
+
+        return $this;
+    }
+
+    /**
+     * Get flag
+     *
+     * @return integer
+     */
+    public function getFlag()
+    {
+        return $this->flag;
     }
 }

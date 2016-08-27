@@ -1,0 +1,17 @@
+{% macro listTab(videos) %}
+    <div class="news">
+        {% for video in videos %}
+            <a class="news-block" href="{{ path('frontend_video_one', {slug: video.slug}) }}">
+                <div class="cover"><img src="{{ image(video.video.previewImageUrl).zoomCrop(170, 190).jpeg(100) }}"></div>
+                <div class="short-block">
+                    <div class="date">{{ video.created|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
+                    <div class="title">{{ video.title }}</div>
+                    <div class="content">{{ video.description }}</div>
+                </div>
+            </a>
+        {% endfor %}
+        {% if videos.count is defined %}
+            {{ knp_pagination_render(videos) }}
+        {% endif %}
+    </div>
+{% endmacro %}

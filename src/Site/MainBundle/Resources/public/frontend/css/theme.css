@@ -9,7 +9,7 @@ body {
 
 .wrap {
   min-height: 100%;
-  padding-bottom: 154px; }
+  padding-bottom: 124px; }
 
 .container {
   width: 1050px;
@@ -102,6 +102,9 @@ body {
   width: 740px;
   float: left;
   padding-right: 20px; }
+  .news--all {
+    width: auto;
+    padding-right: 0; }
 
 .news .news-block {
   display: block;
@@ -181,7 +184,8 @@ body {
 .view-point .wrap-view-point-block {
   display: inline-block;
   width: 33.33%;
-  text-decoration: none; }
+  text-decoration: none;
+  vertical-align: top; }
   .view-point .wrap-view-point-block:hover {
     color: #000; }
 
@@ -212,7 +216,7 @@ body {
   text-align: center;
   font-size: 1.14286em;
   background-color: #fff;
-  margin-top: -154px; }
+  margin-top: -124px; }
   .footer--inner {
     max-width: 1050px;
     margin: 0 auto; }

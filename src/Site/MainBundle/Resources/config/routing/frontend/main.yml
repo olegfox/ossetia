@@ -17,3 +17,11 @@ frontend_quote:
 frontend_news_paper:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/news_paper.yml"
     prefix: /gaziety
+
+frontend_photo:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/photo.yml"
+    prefix: /photo
+
+frontend_video:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/video.yml"
+    prefix: /video

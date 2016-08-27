@@ -87,6 +87,7 @@ backend:
         metadescription: Мета-описание
         metakeywords: Ключевые слова
         type: Тип новости
+        flag: Принадлежность новости
         date: Дата
         img: Изображение новости
         description: Превью новости
@@ -100,6 +101,9 @@ backend:
             meeting: Встречи с населением
             point_view: Точка зрения
             analytics: Аналитика
+        flag_choice:
+            type1: Обычная
+            type2: Для молодежной организации
 
     quote:
         h1_show: Цитат

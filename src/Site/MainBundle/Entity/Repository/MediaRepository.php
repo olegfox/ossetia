@@ -29,11 +29,25 @@ class MediaRepository extends EntityRepository
         return $allMedia;
     }
 
-    public function findPhoto()
+    public function findPhotos()
     {
         $media = $this->getEntityManager()->createQuery('
         SELECT m FROM Site\MainBundle\Entity\Media m
-        LEFT JOIN m.photos AS photo
+        LEFT JOIN m.video AS video
+        WHERE video.id IS NULL
+        ORDER BY m.created DESC
+        ')
+            ->getResult();
+
+        return $media;
+    }
+
+    public function findVideos()
+    {
+        $media = $this->getEntityManager()->createQuery('
+        SELECT m FROM Site\MainBundle\Entity\Media m
+        LEFT JOIN m.video AS video
+        WHERE video.id > 0
         ORDER BY m.created DESC
         ')
             ->getResult();

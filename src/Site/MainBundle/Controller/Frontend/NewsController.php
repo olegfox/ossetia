@@ -31,6 +31,30 @@ class NewsController extends Controller
         return $this->render('SiteMainBundle:Frontend/News:index.html.twig', $params);
     }
 
+    public function ajaxAction(Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository('SiteMainBundle:News');
+        $repositoryPage = $this->getDoctrine()->getRepository('SiteMainBundle:Page');
+
+        $news = $repository->findAll(1);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $news,
+            $request->query->get('page', 1) /*page number*/,
+            5/*limit per page*/
+        );
+
+        $page = $repositoryPage->findOneBy(array('slug' => 'novosti-1'));
+
+        $params = array(
+            'news' => $pagination,
+            'page' => $page
+        );
+
+        return $this->render('SiteMainBundle:Frontend/News:ajax.html.twig', $params);
+    }
+
     public function oneAction($slug)
     {
         $repository = $this->getDoctrine()->getRepository('SiteMainBundle:News');

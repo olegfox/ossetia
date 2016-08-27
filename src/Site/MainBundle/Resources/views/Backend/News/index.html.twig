@@ -10,6 +10,7 @@
                 <th>{{ 'backend.news.title'|trans }}</th>
                 <th>{{ 'backend.news.date'|trans }}</th>
                 <th>{{ 'backend.news.type'|trans }}</th>
+                <th>{{ 'backend.news.flag'|trans }}</th>
                 <th>{{ 'backend.actions'|trans }}</th>
             </tr>
             </thead>
@@ -19,6 +20,7 @@
                     <td><a href="{{ path('backend_news_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
                     <td>{{ entity.date|date('d.m.Y H:i') }}</td>
                     <td>{{ entity.getTypeText()|trans }}</td>
+                    <td>{{ entity.getFlagText()|trans }}</td>
                     <td>
                         <ul class="nav nav-pills">
                             <li>

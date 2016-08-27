@@ -9,37 +9,17 @@ class NewsRepository extends EntityRepository
 {
 
 //  Поиск всех новостей
-    public function findAll(){
+    public function findAll($flag = 0){
         return $this->createQueryBuilder('n')
+            ->where('n.flag = :flag')
             ->orderBy('n.date', 'desc')
+            ->setParameter('flag', $flag)
             ->getQuery()
             ->getResult();
     }
 
-//  Поиск всех новостей + разбивание по типам
-    public function findAllForType(){
-        $news = $this->findAll();
-
-        $newsArray = array('events' => array(), 'interviews' => array(), 'opinion' => array());
-
-        foreach($news as $n){
-            if($n->getType() == 0){
-                if(count($newsArray['events']) == 4) continue;
-                $newsArray['events'][] = $n;
-            }elseif($n->getType() == 1){
-                if(count($newsArray['interviews']) == 4) continue;
-                $newsArray['interviews'][] = $n;
-            }elseif($n->getType() == 2){
-                if(count($newsArray['opinion']) == 4) continue;
-                $newsArray['opinion'][] = $n;
-            }
-        }
-
-        return $newsArray;
-    }
-
 //  Поиск по типу новости
-    public function findType($type){
+    public function findType($type, $flag = 0){
         switch($type){
             case 'official': {
                 $typeId = 0;
@@ -63,8 +43,12 @@ class NewsRepository extends EntityRepository
 
         $news = $this->createQueryBuilder('n')
             ->where('n.type = :type')
+            ->andWhere('n.flag = :flag')
             ->orderBy('n.date', 'desc')
-            ->setParameter('type', $typeId)
+            ->setParameters(array(
+                'type' =>  $typeId,
+                'flag' => $flag
+            ))
             ->getQuery()
             ->getResult();
 
@@ -73,45 +57,21 @@ class NewsRepository extends EntityRepository
     }
 
 //  Три последние новости
-    public function findLast(){
+    public function findLast($flag = 0){
 
         $em = $this->getEntityManager();
 
         $news = $em->createQuery('
         SELECT n FROM Site\MainBundle\Entity\News n
+        WHERE n.flag = :flag
         ORDER BY n.date DESC
         ')
+            ->setParameter('flag', $flag)
             ->setMaxResults(4)
             ->getResult();
 
         return $news;
 
-    }
-
-//  Поиск новостей по типу события
-    public function findByEventType($typeEvent){
-
-        switch($typeEvent){
-            case 'chiempionat': {
-                $typeNumber = Event::NAME_CHAMPIONSHIP;
-            }break;
-            case 'kubok': {
-                $typeNumber = Event::NAME_CUP;
-            }break;
-            case 'ligha-ievropy': {
-                $typeNumber = Event::NAME_EUROPA_LEAGUE;
-            }break;
-            case 'dubliruiushchii-sostav-1': {
-                $typeNumber = Event::NAME_YOUTH_CHAMPIONSHIP;
-            }break;
-            default: {
-                $typeNumber = Event::NAME_CHAMPIONSHIP;
-            }break;
-        }
-
-        $news = $this->findBy(array('typeEvent' => $typeNumber), array('date' => 'DESC'));
-
-        return $news;
     }
 
 //  Поиск

@@ -1,3 +1,7 @@
+frontend_ajax_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Frontend/News:ajax" }
+
 frontend_news_index:
     path:     /{type}
     defaults: { _controller: "SiteMainBundle:Frontend/News:index" }

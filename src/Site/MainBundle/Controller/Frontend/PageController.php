@@ -23,14 +23,6 @@ class PageController extends Controller
             "page" => $page
         );
 
-        if ($slug == 'fotoghalieriei') {
-            $repository_media = $this->getDoctrine()->getRepository('SiteMainBundle:Media');
-
-            $params = array_merge($params, array(
-                'media' => $repository_media->findPhoto()
-            ));
-        }
-
         return $this->render('SiteMainBundle:Frontend/Page:index.html.twig', $params);
     }
 }

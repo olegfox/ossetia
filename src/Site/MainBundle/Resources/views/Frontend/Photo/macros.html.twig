@@ -1,0 +1,17 @@
+{% macro listTab(photos) %}
+    <div class="news">
+        {% for photo in photos %}
+            <a class="news-block" href="{{ path('frontend_photo_one', {slug: photo.slug}) }}">
+                <div class="cover"><img src="{{ image(photo.webPath).zoomCrop(170, 190).jpeg(100) }}"></div>
+                <div class="short-block">
+                    <div class="date">{{ photo.created|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
+                    <div class="title">{{ photo.title }}</div>
+                    <div class="content">{{ photo.description }}</div>
+                </div>
+            </a>
+        {% endfor %}
+        {% if photos.count is defined %}
+            {{ knp_pagination_render(photos) }}
+        {% endif %}
+    </div>
+{% endmacro %}
