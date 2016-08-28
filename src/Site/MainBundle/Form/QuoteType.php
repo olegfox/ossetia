@@ -20,6 +20,14 @@ class QuoteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('onMain', ChoiceType::class, array(
+                'required' => true,
+                'label' => 'backend.quote.onMain.label',
+                'choices' => array(
+                    'Нет' => false,
+                    'Да' => true
+                )
+            ))
             ->add('title', TextType::class, array(
                 'required' => true,
                 'label' => 'backend.quote.title'

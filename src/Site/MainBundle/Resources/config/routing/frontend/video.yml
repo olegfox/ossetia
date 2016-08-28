@@ -3,5 +3,5 @@ frontend_video_index:
     defaults: { _controller: "SiteMainBundle:Frontend/Video:index" }
 
 frontend_video_one:
-    path:     /slug
+    path:     /{slug}
     defaults: { _controller: "SiteMainBundle:Frontend/Video:one" }

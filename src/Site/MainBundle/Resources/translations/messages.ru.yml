@@ -120,6 +120,8 @@ backend:
         img: Фотография автора
         text: Текст цитаты
         not_found: Цитата не существует
+        onMain:
+          label: Главная цитата
 
     news_paper:
         h1_show: Публикации

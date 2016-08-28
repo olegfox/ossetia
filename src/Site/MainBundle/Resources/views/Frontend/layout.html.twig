@@ -15,11 +15,17 @@
         <div class="header container">
             <a href="{{ path('frontend_homepage') }}"><img src="{{ asset('bundles/sitemain/frontend/images/logo.png') }}"></a>
             <a href="{{ path('frontend_homepage') }}" class="brand">Республиканская политическая партия<br>&laquo;ЕДИНАЯ ОСЕТИЯ&raquo;</a>
-            <div class="search"><input type="text" name="" placeholder="Поиск по сайту"></div>
+            <div class="search">
+                <form action="{{ path('frontend_search') }}" method="get">
+                    <input type="hidden" name="searchid" value="2279008" />
+                    <input type="hidden" name="web" value="0" />
+                    <input type="text" name="text" placeholder="Поиск по сайту">
+                </form>
+            </div>
         </div>
         {% block nav %}
         <div class="nav container">
-            {{ knp_menu_render('frontend_main_menu', { 'template': 'SiteMainBundle:Frontend/Menu:knp_menu.html.twig', 'style': 'navbar' }) }}
+            {{ knp_menu_render('frontend_main_menu', { 'currentClass': 'current', 'style': 'navbar nav-justified' }) }}
         </div>
         {% endblock %}
         {% block content %}
@@ -27,12 +33,7 @@
             {% block main_content %}
             {% endblock %}
             {% block right_block %}
-            <div class="right-block">
-                <div class="quote-block">
-                    Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад.<br>
-                    <span class="author">Андрей Петрович</span>
-                </div>
-            </div>
+                {{ render(url('frontend_quote_main')) }}
             {% endblock %}
         </div>
         {% endblock %}

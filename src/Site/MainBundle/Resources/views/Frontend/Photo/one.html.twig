@@ -1,11 +1,15 @@
 {% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
 
-{% block title %}{{ media.metaTitle }}{% endblock %}
-{% block meta_description %}{{ media.metaDescription }}{% endblock %}
-{% block meta_keywords %}{{ media.metaKeywords }}{% endblock %}
+{% from 'SiteMainBundle:Frontend/Photo:macros.html.twig' import gallery %}
+
+{% block title %}{{ photo.metaTitle }}{% endblock %}
+{% block meta_description %}{{ photo.metaDescription }}{% endblock %}
+{% block meta_keywords %}{{ photo.metaKeywords }}{% endblock %}
 
 {% block stylesheets %}
+    {{ parent() }}
     {% stylesheets
+    'bundles/sitemain/frontend/js/photoswipe/photoswipe.css'
     'bundles/sitemain/frontend/css/gallery.css'
     filter='yui_css' %}
     <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
@@ -13,8 +17,23 @@
 {% endblock %}
 
 {% block content %}
+    <div class="container">
+        <h2>{{ photo.title }}</h2>
+        {{ photo.created|localizeddate('long', 'none', null, null, 'd MMMM Y') }}
+        <br/>
+        <br/>
+        {{ photo.text|raw }}
+        {{ gallery(photo) }}
+    </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+    {% javascripts
+    'bundles/sitemain/frontend/js/photoswipe/lib/simple-inheritance.min.js'
+    'bundles/sitemain/frontend/js/photoswipe/code-photoswipe-1.0.11.min.js'
+    'bundles/sitemain/frontend/js/init.photo.js'
+    filter='yui_js' %}
+    <script type="text/javascript" src="{{ asset_url }}" id="scripts"></script>
+    {% endjavascripts %}
 {% endblock %}

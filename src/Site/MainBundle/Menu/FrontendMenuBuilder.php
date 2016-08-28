@@ -48,27 +48,45 @@ class FrontendMenuBuilder
         foreach ($menus as $m) {
             if($m->getPage()) {
                 if ($m->getPage()->getSlug() == 'novosti') {
-                    $menu->addChild($m->getTitle(), array(
+                    $child = $menu->addChild($m->getTitle(), array(
                         'route' => 'frontend_news_index',
                         'routeParameters' => array(
                             'type' => 'official'
                         )
                     ));
+
+                    if ($routeName == 'frontend_news_index' || $routeName == 'frontend_news_one') {
+                        $child->setCurrent(true);
+                    }
+
                 } elseif ($m->getPage()->getSlug() == 'tsitaty') {
-                    $menu->addChild($m->getTitle(), array(
+                    $child = $menu->addChild($m->getTitle(), array(
                         'route' => 'frontend_quote_index'
                     ));
+
+                    if ($routeName == 'frontend_quote_one') {
+                        $child->setCurrent(true);
+                    }
                 } elseif ($m->getPage()->getSlug() == 'gaziety') {
-                    $menu->addChild($m->getTitle(), array(
+                    $child = $menu->addChild($m->getTitle(), array(
                         'route' => 'frontend_news_paper_index'
                     ));
+
+                    if ($routeName == 'frontend_news_paper_one') {
+                        $child->setCurrent(true);
+                    }
                 } else {
-                    $menu->addChild($m->getTitle(), array(
+                    $child = $menu->addChild($m->getTitle(), array(
                         'route' => 'frontend_page_index',
                         'routeParameters' => array(
                             'slug' => $m->getPage()->getSlug()
                         )
                     ));
+
+                    if ($m->getPage()->getSlug() == $request->get('parent') ||
+                        ($m->getPage()->getSlug() == 'molodiezhnaia-orghanizatsiia-iedinaia-alaniia' && $routeName == 'frontend_news_young_one')) {
+                        $child->setCurrent(true);
+                    }
                 }
             } else {
                 $menu->addChild($m->getTitle(), array(
@@ -104,13 +122,17 @@ class FrontendMenuBuilder
         $menu->setChildrenAttribute('class', 'nav subnav container black');
 
         foreach ($menus as $key => $m) {
-            $menu->addChild($m->getTitle(), array(
+            $child = $menu->addChild($m->getTitle(), array(
                 'route' => 'frontend_subpage_index',
                 'routeParameters' => array(
                     'parent' => $slug,
                     'slug' => $m->getPage()->getSlug()
                 )
             ));
+
+            if ($m->getPage()->getSlug() == $request->get('parent')) {
+                $child->setCurrent(true);
+            }
         }
 
         $menu->setCurrent($request->getRequestUri());
@@ -135,12 +157,16 @@ class FrontendMenuBuilder
         );
 
         foreach ($types as $key => $type) {
-            $menu->addChild($key, array(
+            $child = $menu->addChild($key, array(
                 'route' => 'frontend_news_index',
                 'routeParameters' => array(
                     'type' => $type
                 )
             ));
+
+            if ($type == $request->get('type')) {
+                $child->setCurrent(true);
+            }
         }
 
         $menu->setCurrent($request->getRequestUri());

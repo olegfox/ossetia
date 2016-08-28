@@ -79,6 +79,11 @@ class Quote
      */
     private $file;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $onMain = false;
+
     public function getAbsolutePath()
     {
         return null === $this->img
@@ -340,5 +345,29 @@ class Quote
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set onMain
+     *
+     * @param boolean $onMain
+     *
+     * @return Quote
+     */
+    public function setOnMain($onMain)
+    {
+        $this->onMain = $onMain;
+
+        return $this;
+    }
+
+    /**
+     * Get onMain
+     *
+     * @return boolean
+     */
+    public function getOnMain()
+    {
+        return $this->onMain;
     }
 }

@@ -8,7 +8,9 @@
 
 {% block nav %}
     {{ parent() }}
-    {{ knp_menu_render('frontend_news_type_menu', { 'template': 'SiteMainBundle:Frontend/Menu:knp_menu.html.twig', 'style': 'navbar' }) }}
+    {% if app.request.attributes.get('_route') == 'frontend_news_index' %}
+    {{ knp_menu_render('frontend_news_type_menu', { 'style': 'navbar' }) }}
+    {% endif %}
 {% endblock %}
 
 {% block main_content %}

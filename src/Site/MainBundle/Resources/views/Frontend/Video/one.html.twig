@@ -1,20 +1,43 @@
 {% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
 
-{% block title %}{{ media.metaTitle }}{% endblock %}
-{% block meta_description %}{{ media.metaDescription }}{% endblock %}
-{% block meta_keywords %}{{ media.metaKeywords }}{% endblock %}
+{% from 'SiteMainBundle:Frontend/Video:macros.html.twig' import videoBlock %}
+
+{% block title %}{{ video.metaTitle }}{% endblock %}
+{% block meta_description %}{{ video.metaDescription }}{% endblock %}
+{% block meta_keywords %}{{ video.metaKeywords }}{% endblock %}
 
 {% block stylesheets %}
+    {{ parent() }}
     {% stylesheets
-    'bundles/sitemain/frontend/css/gallery.css'
+    'bundles/sitemain/frontend/js/fancybox/jquery.fancybox.css'
+    'bundles/sitemain/frontend/js/fancybox/helpers/jquery.fancybox-buttons.css'
+    'bundles/sitemain/frontend/js/fancybox/helpers/jquery.fancybox-thumbs.css'
+    'bundles/sitemain/frontend/css/video.css'
     filter='yui_css' %}
     <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
     {% endstylesheets %}
 {% endblock %}
 
 {% block content %}
+    <div class="container">
+        <h2>{{ video.title }}</h2>
+        {{ video.created|localizeddate('long', 'none', null, null, 'd MMMM Y') }}
+        <br/>
+        <br/>
+        {{ videoBlock(video) }}
+        {{ video.text|raw }}
+    </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+    {% javascripts
+    'bundles/sitemain/frontend/js/fancybox/jquery.fancybox.pack.js'
+    'bundles/sitemain/frontend/js/fancybox/helpers/jquery.fancybox-buttons.js'
+    'bundles/sitemain/frontend/js/fancybox/helpers/jquery.fancybox-media.js'
+    'bundles/sitemain/frontend/js/fancybox/helpers/jquery.fancybox-thumbs.js'
+    'bundles/sitemain/frontend/js/init.fancybox.js'
+    filter='yui_js' %}
+    <script type="text/javascript" src="{{ asset_url }}" id="scripts"></script>
+    {% endjavascripts %}
 {% endblock %}

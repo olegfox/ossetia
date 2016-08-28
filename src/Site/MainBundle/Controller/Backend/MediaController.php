@@ -62,6 +62,7 @@ class MediaController extends Controller
                 $mediaVideo = new MediaVideo();
                 $mediaVideo->setTitle($video->title);
                 $mediaVideo->setLink($entity->getVideoUrl());
+                $mediaVideo->setOriginal($video->url);
                 $mediaVideo->setPreviewImageUrl($video->thumbnail_url);
                 $mediaVideo->setHtml($video->html);
                 $mediaVideo->setMedia($entity);
@@ -247,6 +248,7 @@ class MediaController extends Controller
 
                     $mediaVideo->setTitle($video->title);
                     $mediaVideo->setLink($entity->getVideoUrl());
+                    $mediaVideo->setOriginal($video->url);
                     $mediaVideo->setPreviewImageUrl($video->thumbnail_url);
                     $mediaVideo->setHtml($video->html);
                     $mediaVideo->setMedia($entity);

@@ -47,4 +47,17 @@ class QuoteController extends Controller
 
         return $this->render('SiteMainBundle:Frontend/Quote:one.html.twig', $params);
     }
+
+    public function mainAction()
+    {
+        $repository = $this->getDoctrine()->getRepository('SiteMainBundle:Quote');
+
+        $quote = $repository->findOneBy(array('onMain' => true));
+
+        $params = array(
+            'quote' => $quote
+        );
+
+        return $this->render('SiteMainBundle:Frontend/Quote:main.html.twig', $params);
+    }
 }

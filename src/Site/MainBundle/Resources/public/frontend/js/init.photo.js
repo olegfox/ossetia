@@ -1,6 +1,6 @@
 jQuery(function(){
-    if($('.media .gallery').length > 0){
-        $(".media .gallery").each(function(i, e){
+    if($('.gallery').length > 0){
+        $(".gallery").each(function(i, e){
 
             $(e).unbind('click').click(function(){
                 if (window.history.pushState) {

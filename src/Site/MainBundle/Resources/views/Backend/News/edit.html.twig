@@ -21,23 +21,23 @@
     {{ form_row(edit_form.description) }}
     {{ form_row(edit_form.text) }}
     {{ form_row(edit_form.file) }}
-    {% if entity.photos|length > 0 %}
-        <table class="table">
-            <thead>
-            <th>Удалить</th>
-            <th>Фото</th>
-            </thead>
-            <tbody>
-            {% for photo in entity.photos %}
-                <tr>
-                    <td><input name="photos[]" type="checkbox" value="{{ photo.id }}"/></td>
-                    <td><a href="{{ asset(photo.link) }}" target="_blank"><img src="{{ image(photo.link).zoomCrop(50, 50) }}" alt="{{ image(photo.link).zoomCrop(50, 50) }}"/></a></td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
-    {{ form_row(edit_form.gallery) }}
+    {#{% if entity.photos|length > 0 %}#}
+        {#<table class="table">#}
+            {#<thead>#}
+            {#<th>Удалить</th>#}
+            {#<th>Фото</th>#}
+            {#</thead>#}
+            {#<tbody>#}
+            {#{% for photo in entity.photos %}#}
+                {#<tr>#}
+                    {#<td><input name="photos[]" type="checkbox" value="{{ photo.id }}"/></td>#}
+                    {#<td><a href="{{ asset(photo.link) }}" target="_blank"><img src="{{ image(photo.link).zoomCrop(50, 50) }}" alt="{{ image(photo.link).zoomCrop(50, 50) }}"/></a></td>#}
+                {#</tr>#}
+            {#{% endfor %}#}
+            {#</tbody>#}
+        {#</table>#}
+    {#{% endif %}#}
+    {#{{ form_row(edit_form.gallery) }}#}
     {{ form_end(edit_form) }}
 
     <ul class="record_actions nav nav-pills">

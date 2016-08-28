@@ -15,3 +15,14 @@
         {% endif %}
     </div>
 {% endmacro %}
+
+{% macro videoBlock(video) %}
+    {% if video.video.id is defined and video.video.link|length > 0 %}
+        <div class="wrap-video">
+            <a href="{{ video.video.original }}" class="fancybox">
+                <img src="{{ asset('bundles/sitemain/frontend/images/play.png') }}" class="play-button" alt=""/>
+            </a>
+            <img src="{{ image(video.video.previewImageUrl).cropResize(500).jpeg(100) }}" alt=""/>
+        </div>
+    {% endif %}
+{% endmacro %}

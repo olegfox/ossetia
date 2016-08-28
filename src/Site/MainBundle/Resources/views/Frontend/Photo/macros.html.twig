@@ -1,5 +1,5 @@
 {% macro listTab(photos) %}
-    <div class="news">
+    <div class="news news--all">
         {% for photo in photos %}
             <a class="news-block" href="{{ path('frontend_photo_one', {slug: photo.slug}) }}">
                 <div class="cover"><img src="{{ image(photo.webPath).zoomCrop(170, 190).jpeg(100) }}"></div>
@@ -13,5 +13,20 @@
         {% if photos.count is defined %}
             {{ knp_pagination_render(photos) }}
         {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro gallery(photo) %}
+    <div class="wrap-gallery">
+        <div class="gallery">
+            <a href="{{ asset(photo.webPath) }}">
+                <img src="{{ image(photo.webPath).zoomCrop(500, 500).jpeg(100) }}" alt="{{ photo.title }}"/>
+            </a>
+            {% for p in photo.photos %}
+                <a href="{{ asset(p.link) }}">
+                    <img src="{{ image(p.link).zoomCrop(500, 500).jpeg(100) }}" alt="{{ photo.title }}"/>
+                </a>
+            {% endfor %}
+        </div>
     </div>
 {% endmacro %}

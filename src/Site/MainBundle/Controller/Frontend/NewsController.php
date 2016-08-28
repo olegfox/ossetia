@@ -71,4 +71,21 @@ class NewsController extends Controller
 
         return $this->render('SiteMainBundle:Frontend/News:one.html.twig', $params);
     }
+
+    public function oneYoungAction($slug)
+    {
+        $repository = $this->getDoctrine()->getRepository('SiteMainBundle:News');
+
+        $news = $repository->findOneBySlug($slug);
+
+        if(!$news){
+            throw $this->createNotFoundException($this->get('translator')->trans('backend.news.not_found'));
+        }
+
+        $params = array(
+            'news' => $news
+        );
+
+        return $this->render('SiteMainBundle:Frontend/News:one.html.twig', $params);
+    }
 }

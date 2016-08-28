@@ -24,7 +24,7 @@
 
 {% block nav %}
     {{ parent() }}
-    {{ knp_menu_render('frontend_sub_menu', { 'template': 'SiteMainBundle:Frontend/Menu:knp_menu.html.twig', 'style': 'navbar' }) }}
+    {{ knp_menu_render('frontend_sub_menu', { 'style': 'navbar' }) }}
 {% endblock %}
 
 {% block content %}

@@ -8,6 +8,13 @@
     {{ parent() }}
 {% endblock %}
 
+{% block nav %}
+    {{ parent() }}
+    {% if app.request.attributes.get('_route') == 'frontend_news_one' %}
+    {{ knp_menu_render('frontend_news_type_menu', { 'style': 'navbar' }) }}
+    {% endif %}
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <h1>{{ news.title }}</h1>

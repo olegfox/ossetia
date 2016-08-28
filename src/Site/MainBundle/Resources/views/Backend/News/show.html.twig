@@ -43,16 +43,16 @@
             <th>{{ 'backend.news.metakeywords'|trans }}</th>
             <td>{{ entity.metaKeywords }}</td>
         </tr>
-        <tr>
-            <th>{{ 'backend.news.photos'|trans }}</th>
-            <td>
-                <div class="galery">
-                    {% for photo in entity.photos %}
-                        <a href="{{ asset(photo.link) }}" target="_blank"><img src="{{ image(photo.link).zoomCrop(50, 50) }}" alt="{{ image(photo.link).zoomCrop(50, 50) }}"/></a>
-                    {% endfor %}
-                </div>
-            </td>
-        </tr>
+        {#<tr>#}
+            {#<th>{{ 'backend.news.photos'|trans }}</th>#}
+            {#<td>#}
+                {#<div class="galery">#}
+                    {#{% for photo in entity.photos %}#}
+                        {#<a href="{{ asset(photo.link) }}" target="_blank"><img src="{{ image(photo.link).zoomCrop(50, 50) }}" alt="{{ image(photo.link).zoomCrop(50, 50) }}"/></a>#}
+                    {#{% endfor %}#}
+                {#</div>#}
+            {#</td>#}
+        {#</tr>#}
         </tbody>
     </table>
 

@@ -1,68 +1,11 @@
-.wrap-media {
-  position: absolute;
-  left: -17px;
-  right: -17px;
-  margin: 0 auto;
-  padding-bottom: 50px; }
-  .wrap-media .media .wrap-box {
+.wrap-gallery .gallery {
+  font-size: 0;
+  margin: 0 -5px; }
+  .wrap-gallery .gallery a {
     display: inline-block;
-    width: 25%;
-    cursor: pointer; }
-    @media (max-width: 1200px) {
-      .wrap-media .media .wrap-box {
-        width: 50%; } }
-    @media (max-width: 960px) {
-      .wrap-media .media .wrap-box {
-        width: 50%; } }
-    @media (max-width: 600px) {
-      .wrap-media .media .wrap-box {
-        width: 100%; } }
-    .wrap-media .media .wrap-box .box {
-      padding: 0px 17px 34px 17px; }
-      .wrap-media .media .wrap-box .box img {
-        width: 100%; }
-      .wrap-media .media .wrap-box .box .name {
-        display: inline-block;
-        padding: 13px 13px 13px 0px;
-        font-size: em(16px);
-        color: #000;
-        line-height: 18px;
-        text-decoration: none;
-        text-transform: uppercase; }
-      .wrap-media .media .wrap-box .box .wrap {
-        position: relative;
-        background: #000; }
-        .wrap-media .media .wrap-box .box .wrap .gallery img {
-          opacity: 0.7;
-          -webkit-transition: opacity 1s;
-          -moz-transition: opacity 1s;
-          -o-transition: opacity 1s;
-          transition: opacity 1s; }
-          .wrap-media .media .wrap-box .box .wrap .gallery img:hover {
-            opacity: 1; }
-      .wrap-media .media .wrap-box .box .wrap-video {
-        position: relative; }
-        .wrap-media .media .wrap-box .box .wrap-video .video {
-          position: absolute;
-          height: 100%;
-          width: 100%;
-          display: block;
-          z-index: 1;
-          background: rgba(0, 0, 0, 0.3);
-          -webkit-transition: background 1s;
-          -moz-transition: background 1s;
-          -o-transition: background 1s;
-          transition: background 1s; }
-          .wrap-media .media .wrap-box .box .wrap-video .video:hover {
-            background: transparent; }
-          .wrap-media .media .wrap-box .box .wrap-video .video .play-button {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            height: em(138px);
-            width: em(138px); }
+    width: 25%; }
+    .wrap-gallery .gallery a img {
+      width: 100%;
+      padding: 0 5px 5px 5px; }
 
 /*# sourceMappingURL=gallery.css.map */

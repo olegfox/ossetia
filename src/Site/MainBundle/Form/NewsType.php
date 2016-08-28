@@ -74,14 +74,14 @@ class NewsType extends AbstractType
                 'required' => false,
                 'label' => 'backend.news.img'
             ))
-            ->add('gallery', FileType::class, array(
-                'required' => false,
-                'label' => 'backend.news.photos',
-                'attr' => array(
-                    'class' => 'uploadify',
-                    'multiple' => true
-                )
-            ))
+//            ->add('gallery', FileType::class, array(
+//                'required' => false,
+//                'label' => 'backend.news.photos',
+//                'attr' => array(
+//                    'class' => 'uploadify',
+//                    'multiple' => true
+//                )
+//            ))
         ;
     }
     

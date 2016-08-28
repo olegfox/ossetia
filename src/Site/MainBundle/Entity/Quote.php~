@@ -70,7 +70,7 @@ class Quote
     private $date;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $img;
 
@@ -80,9 +80,9 @@ class Quote
     private $file;
 
     /**
-     * Список фото из формы
-     **/
-    private $gallery;
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $onMain = false;
 
     public function getAbsolutePath()
     {
@@ -345,17 +345,5 @@ class Quote
     public function getDate()
     {
         return $this->date;
-    }
-
-    public function getGallery()
-    {
-        return $this->gallery;
-    }
-
-    public function setGallery($gallery)
-    {
-        $this->gallery = $gallery;
-
-        return $this;
     }
 }

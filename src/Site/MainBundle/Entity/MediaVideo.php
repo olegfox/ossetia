@@ -38,6 +38,13 @@ class MediaVideo
     /**
      * @var string
      *
+     * @ORM\Column(name="original", type="text", nullable=false)
+     */
+    private $original;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="html", type="text", nullable=false)
      */
     private $html;
@@ -176,5 +183,28 @@ class MediaVideo
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set original
+     *
+     * @param string $original
+     * @return MediaVideo
+     */
+    public function setOriginal($original)
+    {
+        $this->original = $original;
+
+        return $this;
+    }
+
+    /**
+     * Get original
+     *
+     * @return string
+     */
+    public function getOriginal()
+    {
+        return $this->original;
     }
 }

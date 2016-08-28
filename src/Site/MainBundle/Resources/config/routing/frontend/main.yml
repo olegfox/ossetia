@@ -2,6 +2,14 @@ frontend_homepage:
     path:     /
     defaults: { _controller: "SiteMainBundle:Frontend/Main:index" }
 
+frontend_search:
+    path:     /search
+    defaults: { _controller: "SiteMainBundle:Frontend/Search:index" }
+
+frontend_news_young:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/news-young.yml"
+    prefix: /page/molodiezhnaia-orghanizatsiia-iedinaia-alaniia/novosti-1
+
 frontend_page:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/page.yml"
     prefix:   /page

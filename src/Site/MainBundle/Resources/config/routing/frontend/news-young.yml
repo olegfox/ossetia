@@ -1,0 +1,3 @@
+frontend_news_young_one:
+    path:     /{slug}
+    defaults: { _controller: "SiteMainBundle:Frontend/News:oneYoung" }

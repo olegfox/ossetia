@@ -10,12 +10,33 @@
     </div>
 {% endmacro %}
 
-{% macro listTab(news, first = 0) %}
-    <div class="news">
+{% macro listTab(news, first = 0, all = 0) %}
+    <div class="news{% if all == 1 %}news--all{% endif %}">
         {% for n in news %}
             {% if first == 1 and loop.index == 1 %}
             {% else %}
                 <a class="news-block" href="{{ path('frontend_news_one', {type: n.getTypeUrl(), slug: n.slug}) }}">
+                    <div class="cover"><img src="{{ image(n.webPath).zoomCrop(170, 190).jpeg(100) }}"></div>
+                    <div class="short-block">
+                        <div class="date">{{ n.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
+                        <div class="title">{{ n.title }}</div>
+                        <div class="content">{{ n.description }}</div>
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+        {% if news.count is defined %}
+        {{ knp_pagination_render(news) }}
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro listTabYoung(news, first = 0, all = 0) %}
+    <div class="news{% if all == 1 %}news--all{% endif %}">
+        {% for n in news %}
+            {% if first == 1 and loop.index == 1 %}
+            {% else %}
+                <a class="news-block" href="{{ path('frontend_news_young_one', {slug: n.slug}) }}">
                     <div class="cover"><img src="{{ image(n.webPath).zoomCrop(170, 190).jpeg(100) }}"></div>
                     <div class="short-block">
                         <div class="date">{{ n.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
