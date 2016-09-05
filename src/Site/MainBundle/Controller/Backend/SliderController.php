@@ -4,6 +4,7 @@ namespace Site\MainBundle\Controller\Backend;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Site\MainBundle\Entity\Slider;
 use Site\MainBundle\Form\SliderType;
@@ -19,7 +20,7 @@ class SliderController extends Controller
      * Lists all Slider entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -28,7 +29,7 @@ class SliderController extends Controller
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $entities,
-            $this->get('request')->query->get('slider', 1) /*slider number*/,
+            $request->query->get('slider', 1) /*slider number*/,
             10/*limit per slider*/
         );
 
@@ -69,12 +70,12 @@ class SliderController extends Controller
      */
     private function createCreateForm(Slider $entity)
     {
-        $form = $this->createForm(new SliderType(), $entity, array(
+        $form = $this->createForm(SliderType::class, $entity, array(
             'action' => $this->generateUrl('backend_slider_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'backend.create'));
+        $form->add('submit', SubmitType::class, array('label' => 'backend.create'));
 
         return $form;
     }
@@ -149,12 +150,12 @@ class SliderController extends Controller
     */
     private function createEditForm(Slider $entity)
     {
-        $form = $this->createForm(new SliderType(), $entity, array(
+        $form = $this->createForm(SliderType::class, $entity, array(
             'action' => $this->generateUrl('backend_slider_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'backend.update'));
+        $form->add('submit', SubmitType::class, array('label' => 'backend.update'));
 
         return $form;
     }
@@ -224,7 +225,7 @@ class SliderController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('backend_slider_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array(
+            ->add('submit', SubmitType::class, array(
                 'label' => 'backend.delete',
                 'translation_domain' => 'menu',
                 'attr' => array(

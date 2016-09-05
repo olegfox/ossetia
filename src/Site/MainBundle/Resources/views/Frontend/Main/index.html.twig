@@ -1,15 +1,24 @@
 {% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
 
 {% from 'SiteMainBundle:Frontend/News:macros.html.twig' import listTab %}
-{% from 'SiteMainBundle:Frontend/News:macros.html.twig' import main %}
+{% from 'SiteMainBundle:Frontend/Slider:macros.html.twig' import main %}
 {% from 'SiteMainBundle:Frontend/Quote:macros.html.twig' import mainQuotes %}
 
 {% block title %}{{page.metaTitle}}{% endblock %}
 {% block description %}{{page.metaDescription}}{% endblock %}
 {% block keywords %}{{page.metaDescription}}{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+    'bundles/sitemain/frontend/css/slick.css'
+    filter='yui_css' %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block main_content %}
-    {{ main(news[0]) }}
+    {{ main(sliders) }}
     {{ listTab(news, 1) }}
 {% endblock %}
 
@@ -21,6 +30,7 @@
 {% block javascripts %}
     {{ parent() }}
     {% javascripts
+    'bundles/sitemain/frontend/js/slick/slick.min.js'
     'bundles/sitemain/frontend/js/script.js'
     filter='yui_js' %}
     <script type="text/javascript" src="{{ asset_url }}" id="scripts"></script>

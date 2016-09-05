@@ -11,10 +11,12 @@ class MainController extends Controller
         $repositoryPage = $this->getDoctrine()->getRepository('SiteMainBundle:Page');
         $repositoryNews = $this->getDoctrine()->getRepository('SiteMainBundle:News');
         $repositoryQuote = $this->getDoctrine()->getRepository('SiteMainBundle:Quote');
+        $repositorySlider = $this->getDoctrine()->getRepository('SiteMainBundle:Slider');
 
         $page = $repositoryPage->findAll()[0];
         $news = $repositoryNews->findLast();
         $quotes = $repositoryQuote->findLast();
+        $sliders = $repositorySlider->findBy(array('main' => true), array('position' => 'asc'));
 
         if (!$page)
         {
@@ -24,7 +26,8 @@ class MainController extends Controller
         $params = array(
             "page" => $page,
             "news" => $news,
-            "quotes" => $quotes
+            "quotes" => $quotes,
+            "sliders" => $sliders
         );
 
         return $this->render('SiteMainBundle:Frontend/Main:index.html.twig', $params);

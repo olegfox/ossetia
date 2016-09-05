@@ -1,0 +1,20 @@
+{% macro main(sliders) %}
+    <div class="overlay container">
+        <div class="slider">
+            {% for slider in sliders %}
+                {% if slider.link|length > 0 %}<a href="{{ slider.link }}"{% else %}<div{% endif %} {% if slider.webPath|length > 0 %}style="background: url('{{ asset(slider.webPath) }}') center center no-repeat; background-size: cover;"{% endif %}>
+                    <div class="wrap-caption">
+                        <div class="caption">
+                            {% if slider.title1|length > 0 %}
+                                <span class="red">{{ slider.title1 }}</span><br>
+                            {% endif %}
+                            {% if slider.title2|length > 0 %}
+                                <span class="black">{{ slider.title2 }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% if slider.link|length > 0 %}</a>{% else %}</div>{% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}

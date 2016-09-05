@@ -242,4 +242,7 @@ body {
   border-radius: 50px;
   behavior: url(/bundles/sitemain/frontend/css/border-radius-ie8.htc); }
 
+.slider {
+  height: 390px; }
+
 /*# sourceMappingURL=theme.css.map */
