@@ -22,6 +22,7 @@
         {{ photo.created|localizeddate('long', 'none', null, null, 'd MMMM Y') }}
         <br/>
         <br/>
+        {{ photo.description|raw }}
         {{ photo.text|raw }}
         {{ gallery(photo) }}
     </div>
