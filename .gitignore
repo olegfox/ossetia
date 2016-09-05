@@ -19,3 +19,5 @@
 /web/js/
 /web/css/
 /web/cache/
+/.sass-cache
+/.css
