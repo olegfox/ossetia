@@ -255,7 +255,7 @@ class NewsController extends Controller
                 throw $this->createNotFoundException($this->get('translator')->trans('backend.news.not_found'));
             }
 
-            $entity->deleteAllPhotos();
+//            $entity->deleteAllPhotos();
 
             $em->remove($entity);
             $em->flush();
