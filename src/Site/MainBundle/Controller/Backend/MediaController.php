@@ -69,6 +69,10 @@ class MediaController extends Controller
 
                 $em->persist($mediaVideo);
 
+                if($entity->getTitle() == '') {
+                    $entity->setTitle($video->title);
+                }
+
             }
 
 //          Добавляем фотки в фотогалерею
