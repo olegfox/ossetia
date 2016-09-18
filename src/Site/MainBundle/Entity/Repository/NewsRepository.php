@@ -8,6 +8,14 @@ use Site\MainBundle\Entity\Event;
 class NewsRepository extends EntityRepository
 {
 
+    //  Поиск всех новостей
+    public function findAllNews(){
+        return $this->createQueryBuilder('n')
+            ->orderBy('n.date', 'desc')
+            ->getQuery()
+            ->getResult();
+    }
+
 //  Поиск всех новостей
     public function findAll($flag = 0){
         return $this->createQueryBuilder('n')

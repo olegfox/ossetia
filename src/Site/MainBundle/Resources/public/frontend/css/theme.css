@@ -1,9 +1,9 @@
 html,
 body {
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'PT Sans',sans-serif;
   font-weight: 400;
   font-size: 14px;
-  background: #fff url("/bundles/sitemain/frontend/images/Rectangle.svg") 0 100px no-repeat;
+  background: #ececec url("/bundles/sitemain/frontend/images/Rectangle.svg") 0 0 no-repeat;
   background-size: cover;
   min-height: 100%;
   height: 100%; }
@@ -168,6 +168,8 @@ body {
   line-height: 1.28571em;
   font-size: 1.14286em;
   background-color: #E9E9E9; }
+  .right-block .quote-block img {
+    margin: 18px 0; }
 
 .right-block .quote-block .author {
   display: inline-block;

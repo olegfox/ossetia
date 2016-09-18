@@ -25,7 +25,7 @@ class NewsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('SiteMainBundle:News')->findAll();
+        $entities = $em->getRepository('SiteMainBundle:News')->findAllNews();
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(

@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="1440px" height="1520px" viewBox="0 0 1440 1520" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="1561px" height="1112px" viewBox="0 0 1561 1112" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
     <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
-    <title>Rectangle</title>
+    <title>Desktop HD</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.119999997">
-        <g id="Desktop-HD" transform="translate(0.000000, -104.000000)" fill="#4A4A4A">
-            <g id="Ссылки" transform="translate(-125.000000, 104.000000)">
-                <polygon id="Rectangle" points="76 578 358 316 512 432 845 5.68434189e-14 1124 376 1320 280 1642 578 1810 1520 0 1520"></polygon>
-            </g>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.109999999">
+        <g id="Desktop-HD" fill="#4A4A4A">
+            <polygon id="Rectangle" points="-4 704 278 442 432 558 765 126 1044 502 1240 406 1562 704 1730 1646 -80 1646"></polygon>
         </g>
     </g>
 </svg>
