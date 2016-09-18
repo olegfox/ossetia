@@ -6,7 +6,7 @@ jQuery(function() {
         speed: 300,
         slidesToShow: 1,
         adaptiveHeight: true,
-        autoplay: false,
-        autoplaySpeed: 3000
+        autoplay: true,
+        autoplaySpeed: 5000
     });
 });
