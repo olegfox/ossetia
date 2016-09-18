@@ -169,7 +169,8 @@ body {
   font-size: 1.14286em;
   background-color: #E9E9E9; }
   .right-block .quote-block img {
-    margin: 18px 0; }
+    width: 100%;
+    margin: 0 0 18px 0; }
 
 .right-block .quote-block .author {
   display: inline-block;

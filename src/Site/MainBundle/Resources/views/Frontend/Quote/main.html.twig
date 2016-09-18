@@ -1,8 +1,8 @@
 {% if quote.id is defined %}
 <div class="right-block">
     <div class="quote-block">
+        <img src="{{ image(quote.webPath).zoomCrop(200, 200).jpeg(100) }}"><br>
         {{ quote.text|raw }}
-        <img src="{{ image(quote.webPath).zoomCrop(90, 90).jpeg(100) }}" class="img-circle1"><br>
         <span class="author">{{ quote.title }}</span>
     </div>
 </div>
