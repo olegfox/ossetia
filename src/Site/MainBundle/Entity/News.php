@@ -493,7 +493,7 @@ class News
 
     public function getFlagText()
     {
-        switch($this->type){
+        switch($this->flag){
             case 0: {
                 return 'backend.news.flag_choice.type1';
             }break;
