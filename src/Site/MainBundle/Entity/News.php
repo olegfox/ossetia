@@ -501,7 +501,7 @@ class News
                 return 'backend.news.flag_choice.type2';
             }break;
             default: {
-                return 'backend.news.type_choice.type1';
+                return 'backend.news.flag_choice.type1';
             }break;
         }
     }
