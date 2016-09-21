@@ -303,7 +303,7 @@ body {
       display: inline-block;
       width: 50%;
       vertical-align: top;
-      .short-block {
+      .short-block *{
         padding-right: 15px;
       }
     }

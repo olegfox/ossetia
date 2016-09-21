@@ -262,7 +262,7 @@ body {
     display: inline-block;
     width: 50%;
     vertical-align: top; }
-    .news-young .news .news-block .short-block {
+    .news-young .news .news-block .short-block * {
       padding-right: 15px; }
 .news-young .news-young-link {
   display: inline-block;
