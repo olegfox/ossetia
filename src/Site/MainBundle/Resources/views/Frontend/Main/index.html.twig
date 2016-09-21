@@ -22,6 +22,15 @@
     {{ listTab(news) }}
 {% endblock %}
 
+{% block right_block %}
+    {{ parent() }}
+    <div class="news-young">
+        <h2>Новости молодежной организации "Единая Алания"</h2>
+        {{ listTab(newsYoung) }}
+        <a href="{{ path('frontend_subpage_index', {parent: 'molodiezhnaia-orghanizatsiia-iedinaia-alaniia', slug: 'novosti-1'}) }}" class="news-young-link">Все новости</a>
+    </div>
+{% endblock %}
+
 {% block content %}
     {{ parent() }}
     {{ mainQuotes(quotes) }}

@@ -174,11 +174,11 @@ body {
 }
 .news-block .short-block .date {
   color: $color-link;
-  font-size: em(14);
+  font-size: 14px!important;
   margin-top: -4px;
 }
 .news-block .short-block .title {
-  font-size: em(20);
+  font-size: 20px!important;
   line-height: 26px;
   margin-top: 7px;
   margin-bottom: 10px;
@@ -186,7 +186,7 @@ body {
 }
 .news-block .short-block .content {
   color: $color-base;
-  line-height: em(17);
+  line-height: 17px!important;
 }
 .right-block {
   width: 310px;
@@ -267,7 +267,8 @@ body {
   padding: 40px 0;
   text-align: center;
   font-size: em(16);
-  background-color: #fff;
+  background-color: #000;
+  color: #fff;
   margin-top: -124px;
   &--inner {
     max-width: 1050px;
@@ -285,4 +286,29 @@ body {
 
 .slider {
   height: 390px;
+}
+
+.news-young {
+  h2 {
+    display: inline-block;
+    width: 100%;
+    font-size: em(24);
+  }
+  .news {
+    width: 100%;
+    padding-right: 0;
+    font-size: 0;
+    .news-block {
+      display: inline-block;
+      width: 50%;
+      vertical-align: top;
+      .short-block {
+        padding-right: 15px;
+      }
+    }
+  }
+  .news-young-link {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
 }

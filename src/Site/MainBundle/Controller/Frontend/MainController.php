@@ -15,6 +15,7 @@ class MainController extends Controller
 
         $page = $repositoryPage->findAll()[0];
         $news = $repositoryNews->findLast();
+        $newsYoung = $repositoryNews->findLast(1);
         $quotes = $repositoryQuote->findLast();
         $sliders = $repositorySlider->findBy(array('main' => true), array('position' => 'desc'));
 
@@ -26,6 +27,7 @@ class MainController extends Controller
         $params = array(
             "page" => $page,
             "news" => $news,
+            "newsYoung" => $newsYoung,
             "quotes" => $quotes,
             "sliders" => $sliders
         );
