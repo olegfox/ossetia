@@ -153,6 +153,7 @@ body {
 
 .news-block .short-block .content {
   color: #000;
+  font-size: 14px !important;
   line-height: 17px !important; }
 
 .right-block {
