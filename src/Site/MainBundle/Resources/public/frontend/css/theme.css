@@ -253,7 +253,9 @@ body {
 .news-young h2 {
   display: inline-block;
   width: 100%;
-  font-size: 1.71429em; }
+  font-size: 1.71429em;
+  color: #8d0b1b;
+  text-decoration: underline; }
 .news-young .news {
   width: 100%;
   padding-right: 0;
