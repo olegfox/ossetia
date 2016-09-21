@@ -16,7 +16,7 @@ class MainController extends Controller
         $page = $repositoryPage->findAll()[0];
         $news = $repositoryNews->findLast();
         $quotes = $repositoryQuote->findLast();
-        $sliders = $repositorySlider->findBy(array('main' => true), array('position' => 'asc'));
+        $sliders = $repositorySlider->findBy(array('main' => true), array('position' => 'desc'));
 
         if (!$page)
         {

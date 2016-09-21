@@ -10,6 +10,20 @@ Site\MainBundle\Entity\Menu:
             - NotBlank:
                 message: "Заголовок не может быть пустым"
 
+Site\MainBundle\Entity\News:
+    properties:
+        title:
+            - NotBlank:
+                message: "Заголовок не может быть пустым"
+            - Length:
+                max: 512
+                maxMessage: "Длина заголовка не должна превышать 512 символов"
+
+        metaTitle:
+            - Length:
+                max: 512
+                maxMessage: "Длина заголовка не должна превышать 512 символов"
+
 Site\MainBundle\Entity\Quote:
     properties:
         title:

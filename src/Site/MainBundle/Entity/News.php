@@ -26,7 +26,7 @@ class News
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=100, nullable=false)
+     * @ORM\Column(name="title", type="string", length=512, nullable=false)
      */
     private $title;
 
@@ -54,7 +54,7 @@ class News
     /**
      * @var string
      *
-     * @ORM\Column(name="meta_title", type="string", length=100, nullable=true)
+     * @ORM\Column(name="meta_title", type="string", length=512, nullable=true)
      */
     private $metaTitle;
 
