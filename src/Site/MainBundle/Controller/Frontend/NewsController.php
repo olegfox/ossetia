@@ -55,6 +55,39 @@ class NewsController extends Controller
         return $this->render('SiteMainBundle:Frontend/News:ajax.html.twig', $params);
     }
 
+    public function stockYoungAction(Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository('SiteMainBundle:News');
+        $repositoryPage = $this->getDoctrine()->getRepository('SiteMainBundle:Page');
+
+        $news = $repository->createQueryBuilder('n')
+            ->where('n.flag = :flag')
+            ->andWhere('n.type = :type')
+            ->orderBy('n.date', 'desc')
+            ->setParameters(array(
+                'flag' => 1,
+                'type' => 5
+            ))
+            ->getQuery()
+            ->getResult();
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $news,
+            $request->query->get('page', 1) /*page number*/,
+            5/*limit per page*/
+        );
+
+        $page = $repositoryPage->findOneBy(array('slug' => 'aktsii'));
+
+        $params = array(
+            'news' => $pagination,
+            'page' => $page
+        );
+
+        return $this->render('SiteMainBundle:Frontend/News:stock.html.twig', $params);
+    }
+
     public function oneAction($slug)
     {
         $repository = $this->getDoctrine()->getRepository('SiteMainBundle:News');
@@ -73,6 +106,23 @@ class NewsController extends Controller
     }
 
     public function oneYoungAction($slug)
+    {
+        $repository = $this->getDoctrine()->getRepository('SiteMainBundle:News');
+
+        $news = $repository->findOneBySlug($slug);
+
+        if(!$news){
+            throw $this->createNotFoundException($this->get('translator')->trans('backend.news.not_found'));
+        }
+
+        $params = array(
+            'news' => $news
+        );
+
+        return $this->render('SiteMainBundle:Frontend/News:one.html.twig', $params);
+    }
+
+    public function oneStockYoungAction($slug)
     {
         $repository = $this->getDoctrine()->getRepository('SiteMainBundle:News');
 

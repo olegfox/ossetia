@@ -18,12 +18,28 @@ class NewsRepository extends EntityRepository
 
 //  Поиск всех новостей
     public function findAll($flag = 0){
-        return $this->createQueryBuilder('n')
-            ->where('n.flag = :flag')
-            ->orderBy('n.date', 'desc')
-            ->setParameter('flag', $flag)
-            ->getQuery()
-            ->getResult();
+
+        if ($flag == 1) {
+            $query = $this->createQueryBuilder('n')
+                ->where('n.flag = :flag')
+                ->andWhere('n.type <> :type')
+                ->orderBy('n.date', 'desc')
+                ->setParameters(array(
+                    'flag' => $flag,
+                    'type' => 5
+                ))
+                ->getQuery()
+                ->getResult();
+        } else {
+            $query = $this->createQueryBuilder('n')
+                ->where('n.flag = :flag')
+                ->orderBy('n.date', 'desc')
+                ->setParameter('flag', $flag)
+                ->getQuery()
+                ->getResult();
+        }
+
+        return $query;
     }
 
 //  Поиск по типу новости
@@ -71,7 +87,7 @@ class NewsRepository extends EntityRepository
 
         $news = $em->createQuery('
         SELECT n FROM Site\MainBundle\Entity\News n
-        WHERE n.flag = :flag
+        WHERE n.flag = :flag AND n.type <> 5
         ORDER BY n.date DESC
         ')
             ->setParameter('flag', $flag)

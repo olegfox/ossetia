@@ -104,6 +104,7 @@ backend:
             meeting: Встречи с населением
             point_view: Точка зрения
             analytics: Аналитика
+            stock: Акции
         flag_choice:
             type1: Обычная
             type2: Для молодежной организации

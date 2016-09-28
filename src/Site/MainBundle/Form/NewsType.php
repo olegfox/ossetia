@@ -37,6 +37,7 @@ class NewsType extends AbstractType
                     'backend.news.type_choice.meeting' => 2,
                     'backend.news.type_choice.point_view' => 3,
                     'backend.news.type_choice.analytics' => 4,
+                    'backend.news.type_choice.stock' => 5,
                 )
             ))
             ->add('flag', ChoiceType::class, array(

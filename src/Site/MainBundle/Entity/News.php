@@ -485,6 +485,9 @@ class News
             case 4: {
                 return 'backend.news.type_choice.analytics';
             }break;
+            case 5: {
+                return 'backend.news.type_choice.stock';
+            }break;
             default: {
                 return 'backend.news.type_choice.official';
             }break;
