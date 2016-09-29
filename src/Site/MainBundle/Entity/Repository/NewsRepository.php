@@ -87,7 +87,7 @@ class NewsRepository extends EntityRepository
 
         $news = $em->createQuery('
         SELECT n FROM Site\MainBundle\Entity\News n
-        WHERE n.flag = :flag AND n.type <> 5
+        WHERE n.flag = :flag
         ORDER BY n.date DESC
         ')
             ->setParameter('flag', $flag)
