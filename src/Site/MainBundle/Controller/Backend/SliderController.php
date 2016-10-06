@@ -29,7 +29,7 @@ class SliderController extends Controller
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $entities,
-            $request->query->get('slider', 1) /*slider number*/,
+            $request->query->get('page', 1) /*slider number*/,
             10/*limit per slider*/
         );
 
