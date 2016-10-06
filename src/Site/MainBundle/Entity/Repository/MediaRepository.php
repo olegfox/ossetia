@@ -55,6 +55,36 @@ class MediaRepository extends EntityRepository
         return $media;
     }
 
+    public function findLastPhoto()
+    {
+        $media = $this->getEntityManager()->createQuery('
+        SELECT m FROM Site\MainBundle\Entity\Media m
+        LEFT JOIN m.video AS video
+        WHERE video.id IS NULL
+        ORDER BY m.created DESC
+        ')
+            ->setFirstResult(0)
+            ->setMaxResults(1)
+            ->getResult();
+
+        return $media;
+    }
+
+    public function findLastVideo()
+    {
+        $media = $this->getEntityManager()->createQuery('
+        SELECT m FROM Site\MainBundle\Entity\Media m
+        LEFT JOIN m.video AS video
+        WHERE video.id > 0
+        ORDER BY m.created DESC
+        ')
+            ->setFirstResult(0)
+            ->setMaxResults(1)
+            ->getResult();
+
+        return $media;
+    }
+
     public function findAllWithoutSlug($slug, $limit)
     {
         $allMedia = $this->getEntityManager()->createQuery('

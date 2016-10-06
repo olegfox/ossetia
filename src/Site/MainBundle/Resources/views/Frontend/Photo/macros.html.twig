@@ -30,3 +30,14 @@
         </div>
     </div>
 {% endmacro %}
+
+{% macro lastPhoto(photo) %}
+    <div class="wrap-gallery">
+        <h2>{{ photo.title }}</h2>
+        <div class="gallery">
+            <a href="{{ path('frontend_photo_one', {slug: photo.slug}) }}">
+                <img src="{{ image(photo.webPath).zoomCrop(500, 500).jpeg(100) }}" alt="{{ photo.title }}"/>
+            </a>
+        </div>
+    </div>
+{% endmacro %}

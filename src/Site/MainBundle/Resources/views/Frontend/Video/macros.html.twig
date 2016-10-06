@@ -36,3 +36,20 @@
         </div>
     {% endif %}
 {% endmacro %}
+
+{% macro lastVideo(video) %}
+    <div class="wrap-video">
+        <h2>{{ video.title }}</h2>
+        <div class="video">
+            {% if video.preview|length > 0 %}
+                {% set preview = video.webPath() %}
+            {% else %}
+                {% set preview = video.video.previewImageUrl %}
+            {% endif %}
+            <a href="{{ path('frontend_video_one', {slug: video.slug}) }}">
+                <img src="{{ asset('bundles/sitemain/frontend/images/play.png') }}" class="play-button" alt=""/>
+            </a>
+            <img src="{{ image(preview).cropResize(500).jpeg(100) }}" alt=""/>
+        </div>
+    </div>
+{% endmacro %}

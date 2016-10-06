@@ -4,6 +4,8 @@
 {% from 'SiteMainBundle:Frontend/News:macros.html.twig' import listTabYoung %}
 {% from 'SiteMainBundle:Frontend/Slider:macros.html.twig' import main %}
 {% from 'SiteMainBundle:Frontend/Quote:macros.html.twig' import mainQuotes %}
+{% from 'SiteMainBundle:Frontend/Photo:macros.html.twig' import lastPhoto %}
+{% from 'SiteMainBundle:Frontend/Video:macros.html.twig' import lastVideo %}
 
 {% block title %}{{page.metaTitle}}{% endblock %}
 {% block description %}{{page.metaDescription}}{% endblock %}
@@ -35,6 +37,16 @@
 {% block content %}
     {{ parent() }}
     {{ mainQuotes(quotes) }}
+    <div class="wrap-media-block">
+        <div class="media-block">
+            {% if photo.id is defined %}
+                {{ lastPhoto(photo) }}
+            {% endif %}
+            {% if video is defined %}
+                {{ lastVideo(video) }}
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
