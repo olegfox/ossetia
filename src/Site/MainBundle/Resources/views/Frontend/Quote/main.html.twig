@@ -1,9 +1,7 @@
 {% if quote.id is defined %}
-<div class="right-block">
-    <div class="quote-block">
-        <img src="{{ image(quote.webPath).zoomCrop(200, 200).jpeg(100) }}"><br>
-        {{ quote.text|raw }}
-        <span class="author">{{ quote.title }}</span>
-    </div>
+<div class="quote-block">
+    <img src="{{ image(quote.webPath).zoomCrop(200, 200).jpeg(100) }}"><br>
+    {{ quote.text|raw }}
+    <span class="author">{{ quote.title }}</span>
 </div>
 {% endif %}

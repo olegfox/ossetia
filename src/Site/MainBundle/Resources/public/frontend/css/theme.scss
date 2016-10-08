@@ -214,6 +214,11 @@ body {
   margin-top: 6px;
 }
 
+.left-block {
+  width: 740px;
+  float: left;
+}
+
 .view-point {
   clear: both;
   background-color: #d8d8d8;
@@ -290,6 +295,10 @@ body {
 }
 
 .news-young {
+  padding-top: 20px;
+  width: 740px;
+  float: left;
+  padding-right: 20px;
   h2 {
     display: inline-block;
     width: 100%;
@@ -318,16 +327,22 @@ body {
 
 .wrap-media-block {
   .media-block {
-    width: 1050px;
     margin: auto;
     padding-bottom: 50px;
+
+    h2 {
+      font-size: em(24);
+      color: #8d0b1b;
+      text-decoration: underline;
+    }
+
     .wrap-gallery {
-      display: table-cell;
       width: 100%;
+      img {
+        width: 100%;
+      }
     }
     .wrap-video {
-      display: table-cell;
-      width: 100%;
       .video {
         position: relative;
         &:before {
@@ -350,6 +365,9 @@ body {
           margin: auto;
           img {
           }
+        }
+        > img {
+          width: 100%;
         }
       }
     }
