@@ -26,7 +26,7 @@ class News
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=512, nullable=false)
+     * @ORM\Column(name="title", type="text", nullable=false)
      */
     private $title;
 
