@@ -26,7 +26,7 @@ body {
 }
 
 .container {
-  width: 1050px;
+  max-width: 1050px;
   margin: auto;
   padding: 0;
 }
@@ -270,6 +270,7 @@ body {
 }
 .footer {
   width: 100%;
+  max-width: inherit;
   padding: 40px 0;
   text-align: center;
   font-size: em(16);
@@ -373,3 +374,9 @@ body {
     }
   }
 }
+
+.mobile-menu {
+  display: none;
+}
+
+@import "_mobile";

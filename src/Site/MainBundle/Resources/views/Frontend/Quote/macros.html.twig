@@ -1,6 +1,6 @@
 {% macro mainQuotes(quotes) %}
     <div class="view-point">
-        <div class="container">
+        <div class="container container--text">
             <h2>Точка зрения</h2>
             <div class="view-point-blocks">
                 {% for quote in quotes %}
@@ -18,10 +18,10 @@
 {% endmacro %}
 
 {% macro listTab(quotes) %}
-    <div class="news">
+    <div class="news news--list">
         {% for quote in quotes %}
             <a class="news-block" href="{{ path('frontend_quote_one', {slug: quote.slug}) }}">
-                <div class="cover"><img src="{{ image(quote.webPath).zoomCrop(170, 190).jpeg(100) }}"></div>
+                <div class="cover"><img src="{{ image(quote.webPath).zoomCrop(340, 380).jpeg(100) }}"></div>
                 <div class="short-block">
                     <div class="date">{{ quote.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
                     <div class="title">{{ quote.title }}</div>

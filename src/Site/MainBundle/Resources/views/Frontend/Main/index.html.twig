@@ -11,6 +11,8 @@
 {% block description %}{{page.metaDescription}}{% endblock %}
 {% block keywords %}{{page.metaDescription}}{% endblock %}
 
+{% block body_attribute %}class="main-template"{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets
@@ -57,7 +59,6 @@
     {{ parent() }}
     {% javascripts
     'bundles/sitemain/frontend/js/slick/slick.min.js'
-    'bundles/sitemain/frontend/js/script.js'
     filter='yui_js' %}
     <script type="text/javascript" src="{{ asset_url }}" id="scripts"></script>
     {% endjavascripts %}

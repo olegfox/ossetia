@@ -1,7 +1,7 @@
 .wrap-video {
   position: relative;
   margin: 0 20px 0 0;
-  width: 500px;
+  max-width: 500px;
   float: left; }
   .wrap-video:after {
     content: "";
