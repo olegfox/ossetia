@@ -37,4 +37,8 @@ jQuery(function() {
             });
         }
     });
+
+    $('.nav.nav-pills.black').prepend('<li></li>');
+    $('.search').clone().appendTo('.nav.nav-pills.black li:first-child');
+    $('.nav.nav-pills.black').find('li.active').append($('.subnav').clone());
 });

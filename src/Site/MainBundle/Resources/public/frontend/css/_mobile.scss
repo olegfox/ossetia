@@ -65,6 +65,10 @@
   }
 }
 
+ul.nav:not(.subnav) li:first-child {
+  display: none;
+}
+
 @media (max-width: 968px) {
   .header {
     input {
@@ -74,7 +78,7 @@
   .container {
     &.header {
       padding: 0;
-      margin: 0 0 0 90px;
+      margin: 0 0 0 20px;
       height: 90px;
       img {
         float: left;
@@ -93,11 +97,12 @@
         height: 90px;
         vertical-align: middle;
         padding-left: 20px;
+        padding-right: 70px;
       }
       .search {
         position: absolute;
         vertical-align: middle;
-        margin-right: 20px;
+        margin-right: 70px;
         right: 0;
         top: 33px;
       }
@@ -105,7 +110,7 @@
     &.nav {
       position: absolute;
       top: 30px;
-      left: 20px;
+      right: 20px;
       padding: 0;
     }
     &--text {
@@ -117,11 +122,11 @@
     padding: 15px 0 0 0;
     background: #fff;
     top: 0;
-    right: -40%;
+    left: -80%;
     height: 100%;
     width: 40%;
     z-index: 100;
-    border-left: solid 10px #514b4a;
+    border-right: solid 10px #514b4a;
     -webkit-transition: all 0.2s ease-out 0.2s;
     -moz-transition: all 0.2s ease-out 0.2s;
     -o-transition: all 0.2s ease-out 0.2s;
@@ -165,7 +170,26 @@
   body.menu--open {
     ul.nav:not(.subnav) {
       display: block;
+      left: 0;
+    }
+    ul.nav .subnav {
+      display: inline-block;
+      position: relative;
+      border: 0;
+      top: 0;
+      left: 0;
       right: 0;
+      margin-top: 20px;
+      li {
+        a {
+          color: #1627a0!important;
+        }
+        &.active {
+          a {
+            color: #f6a827!important;
+          }
+        }
+      }
     }
   }
 
@@ -277,7 +301,18 @@
     font-size: 22px;
   }
   .caption {
-    font-size: 28px;
+    line-height: 20px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+    background: rgba(0,0,0,0.5);
+    .red {
+      font-size: 20px;
+      line-height: 20px;
+      background-color: initial;
+      text-shadow: 1px 1px 1px #000;
+    }
   }
   .quote-block {
     display: none;
@@ -293,6 +328,16 @@
 }
 
 @media (max-width: 414px) {
+  ul.nav:not(.subnav) {
+    li:first-child {
+      display: block;
+    }
+    .search {
+      input[type="text"] {
+        width: 100%;
+      }
+    }
+  }
   .news {
     .cover {
       float: none;
