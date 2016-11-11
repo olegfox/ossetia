@@ -370,6 +370,9 @@ body {
 ul.nav:not(.subnav) li:first-child {
   display: none; }
 
+ul.nav .subnav {
+  display: none; }
+
 @media (max-width: 968px) {
   .header input {
     font-size: 1em; }
@@ -452,12 +455,16 @@ ul.nav:not(.subnav) li:first-child {
       .mobile-menu span:nth-child(3) {
         top: 21px; }
 
+  ul.nav.subnav {
+    display: none; }
+
   body.menu--open ul.nav:not(.subnav) {
     display: block;
     left: 0; }
   body.menu--open ul.nav .subnav {
     display: inline-block;
     position: relative;
+    width: 100%;
     border: 0;
     top: 0;
     left: 0;

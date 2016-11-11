@@ -69,6 +69,10 @@ ul.nav:not(.subnav) li:first-child {
   display: none;
 }
 
+ul.nav .subnav {
+  display: none;
+}
+
 @media (max-width: 968px) {
   .header {
     input {
@@ -167,6 +171,10 @@ ul.nav:not(.subnav) li:first-child {
     }
   }
 
+  ul.nav.subnav {
+    display: none;
+  }
+
   body.menu--open {
     ul.nav:not(.subnav) {
       display: block;
@@ -175,6 +183,7 @@ ul.nav:not(.subnav) li:first-child {
     ul.nav .subnav {
       display: inline-block;
       position: relative;
+      width: 100%;
       border: 0;
       top: 0;
       left: 0;
