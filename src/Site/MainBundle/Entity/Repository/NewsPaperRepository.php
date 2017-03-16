@@ -10,4 +10,10 @@ namespace Site\MainBundle\Entity\Repository;
  */
 class NewsPaperRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAll(){
+        return $this->createQueryBuilder('n')
+            ->orderBy('n.date', 'desc')
+            ->getQuery()
+            ->getResult();
+    }
 }
