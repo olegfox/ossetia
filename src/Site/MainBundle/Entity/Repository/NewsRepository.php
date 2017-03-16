@@ -45,6 +45,9 @@ class NewsRepository extends EntityRepository
 //  Поиск по типу новости
     public function findType($type, $flag = 0){
         switch($type){
+            case 'all': {
+                $typeId = -1;
+            }break;
             case 'official': {
                 $typeId = 0;
             }break;
@@ -65,16 +68,27 @@ class NewsRepository extends EntityRepository
             }break;
         }
 
-        $news = $this->createQueryBuilder('n')
-            ->where('n.type = :type')
-            ->andWhere('n.flag = :flag')
-            ->orderBy('n.date', 'desc')
-            ->setParameters(array(
-                'type' =>  $typeId,
-                'flag' => $flag
-            ))
-            ->getQuery()
-            ->getResult();
+        if ($typeId == -1) {
+            $news = $this->createQueryBuilder('n')
+                ->where('n.flag = :flag')
+                ->orderBy('n.date', 'desc')
+                ->setParameters(array(
+                    'flag' => $flag
+                ))
+                ->getQuery()
+                ->getResult();
+        } else {
+            $news = $this->createQueryBuilder('n')
+                ->where('n.type = :type')
+                ->andWhere('n.flag = :flag')
+                ->orderBy('n.date', 'desc')
+                ->setParameters(array(
+                    'type' =>  $typeId,
+                    'flag' => $flag
+                ))
+                ->getQuery()
+                ->getResult();
+        }
 
         return $news;
 
