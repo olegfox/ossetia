@@ -1,5 +1,5 @@
 {% macro listTab(newsPapers) %}
-    <div class="news">
+    <div class="news news--list">
         {% for newsPaper in newsPapers %}
             <a class="news-block" href="{{ path('frontend_news_paper_one', {slug: newsPaper.slug}) }}">
                 <div class="cover"><img src="{{ image(newsPaper.webPath).zoomCrop(170, 190).jpeg(100) }}"></div>

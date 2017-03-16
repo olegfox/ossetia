@@ -36,6 +36,9 @@ backend:
         h1_create: Добавление слайда
         back_to_list: Назад к списку картинок
         empty_list: Нет картинок
+        title1: Заголовок 1
+        title2: Заголовок 2
+        link: Ссылка
         position: Позиция
         img: Картинка
         main: Показывать на главной?
@@ -101,6 +104,7 @@ backend:
             meeting: Встречи с населением
             point_view: Точка зрения
             analytics: Аналитика
+            stock: Акции
         flag_choice:
             type1: Обычная
             type2: Для молодежной организации

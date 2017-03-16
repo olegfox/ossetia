@@ -17,12 +17,15 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container container--text">
         <h2>{{ photo.title }}</h2>
         {{ photo.created|localizeddate('long', 'none', null, null, 'd MMMM Y') }}
         <br/>
         <br/>
+        {{ photo.description|raw }}
         {{ photo.text|raw }}
+        <br/>
+        <br/>
         {{ gallery(photo) }}
     </div>
 {% endblock %}

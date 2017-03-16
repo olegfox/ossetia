@@ -10,6 +10,10 @@ frontend_news_young:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/news-young.yml"
     prefix: /page/molodiezhnaia-orghanizatsiia-iedinaia-alaniia/novosti-1
 
+frontend_news_stock:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/news-stock.yml"
+    prefix: /page/molodiezhnaia-orghanizatsiia-iedinaia-alaniia/aktsii
+
 frontend_page:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/page.yml"
     prefix:   /page

@@ -17,7 +17,7 @@
             <a href="{{ path('frontend_homepage') }}" class="brand">Республиканская политическая партия<br>&laquo;ЕДИНАЯ ОСЕТИЯ&raquo;</a>
             <div class="search">
                 <form action="{{ path('frontend_search') }}" method="get">
-                    <input type="hidden" name="searchid" value="2279008" />
+                    <input type="hidden" name="searchid" value="2282539" />
                     <input type="hidden" name="web" value="0" />
                     <input type="text" name="text" placeholder="Поиск по сайту">
                 </form>
@@ -25,6 +25,11 @@
         </div>
         {% block nav %}
         <div class="nav container">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             {{ knp_menu_render('frontend_main_menu', { 'currentClass': 'current', 'style': 'navbar nav-justified' }) }}
         </div>
         {% endblock %}
@@ -49,6 +54,7 @@
     {{ parent() }}
     {% javascripts
     'bundles/sitemain/frontend/js/jquery-1.10.2.min.js'
+    'bundles/sitemain/frontend/js/script.js'
     filter='yui_js' %}
     <script type="text/javascript" src="{{ asset_url }}" id="scripts"></script>
     {% endjavascripts %}

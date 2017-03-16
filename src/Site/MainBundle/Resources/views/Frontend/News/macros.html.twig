@@ -16,7 +16,7 @@
             {% if first == 1 and loop.index == 1 %}
             {% else %}
                 <a class="news-block" href="{{ path('frontend_news_one', {type: n.getTypeUrl(type), slug: n.slug}) }}">
-                    <div class="cover"><img src="{{ image(n.webPath).zoomCrop(170, 190).jpeg(100) }}"></div>
+                    <div class="cover"><img src="{{ image(n.webPath).zoomCrop(340, 380).jpeg(100) }}"></div>
                     <div class="short-block">
                         <div class="date">{{ n.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
                         <div class="title">{{ n.title }}</div>
@@ -36,8 +36,8 @@
         {% for n in news %}
             {% if first == 1 and loop.index == 1 %}
             {% else %}
-                <a class="news-block" href="{{ path('frontend_news_young_one', {slug: n.slug}) }}">
-                    <div class="cover"><img src="{{ image(n.webPath).zoomCrop(170, 190).jpeg(100) }}"></div>
+                <a class="news-block" href="{% if n.type == 5 %}{{ path('frontend_news_stock_one', {slug: n.slug}) }}{% else %}{{ path('frontend_news_young_one', {slug: n.slug}) }}{% endif %}">
+                    <div class="cover"><img src="{{ image(n.webPath).zoomCrop(340, 380).jpeg(100) }}"></div>
                     <div class="short-block">
                         <div class="date">{{ n.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
                         <div class="title">{{ n.title }}</div>
@@ -48,6 +48,27 @@
         {% endfor %}
         {% if news.count is defined %}
         {{ knp_pagination_render(news) }}
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro listTabStock(news, first = 0, all = 0) %}
+    <div class="news{% if all == 1 %}news--all{% endif %}">
+        {% for n in news %}
+            {% if first == 1 and loop.index == 1 %}
+            {% else %}
+                <a class="news-block" href="{{ path('frontend_news_stock_one', {slug: n.slug}) }}">
+                    <div class="cover"><img src="{{ image(n.webPath).zoomCrop(340, 380).jpeg(100) }}"></div>
+                    <div class="short-block">
+                        <div class="date">{{ n.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
+                        <div class="title">{{ n.title }}</div>
+                        <div class="content">{{ n.description }}</div>
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+        {% if news.count is defined %}
+            {{ knp_pagination_render(news) }}
         {% endif %}
     </div>
 {% endmacro %}

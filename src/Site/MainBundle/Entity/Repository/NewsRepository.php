@@ -8,14 +8,38 @@ use Site\MainBundle\Entity\Event;
 class NewsRepository extends EntityRepository
 {
 
-//  Поиск всех новостей
-    public function findAll($flag = 0){
+    //  Поиск всех новостей
+    public function findAllNews(){
         return $this->createQueryBuilder('n')
-            ->where('n.flag = :flag')
             ->orderBy('n.date', 'desc')
-            ->setParameter('flag', $flag)
             ->getQuery()
             ->getResult();
+    }
+
+//  Поиск всех новостей
+    public function findAll($flag = 0){
+
+        if ($flag == 1) {
+            $query = $this->createQueryBuilder('n')
+                ->where('n.flag = :flag')
+                ->andWhere('n.type <> :type')
+                ->orderBy('n.date', 'desc')
+                ->setParameters(array(
+                    'flag' => $flag,
+                    'type' => 5
+                ))
+                ->getQuery()
+                ->getResult();
+        } else {
+            $query = $this->createQueryBuilder('n')
+                ->where('n.flag = :flag')
+                ->orderBy('n.date', 'desc')
+                ->setParameter('flag', $flag)
+                ->getQuery()
+                ->getResult();
+        }
+
+        return $query;
     }
 
 //  Поиск по типу новости

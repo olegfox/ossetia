@@ -26,7 +26,7 @@ class News
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=100, nullable=false)
+     * @ORM\Column(name="title", type="text", nullable=false)
      */
     private $title;
 
@@ -54,7 +54,7 @@ class News
     /**
      * @var string
      *
-     * @ORM\Column(name="meta_title", type="string", length=100, nullable=true)
+     * @ORM\Column(name="meta_title", type="string", length=512, nullable=true)
      */
     private $metaTitle;
 
@@ -485,6 +485,9 @@ class News
             case 4: {
                 return 'backend.news.type_choice.analytics';
             }break;
+            case 5: {
+                return 'backend.news.type_choice.stock';
+            }break;
             default: {
                 return 'backend.news.type_choice.official';
             }break;
@@ -493,7 +496,7 @@ class News
 
     public function getFlagText()
     {
-        switch($this->type){
+        switch($this->flag){
             case 0: {
                 return 'backend.news.flag_choice.type1';
             }break;
@@ -501,7 +504,7 @@ class News
                 return 'backend.news.flag_choice.type2';
             }break;
             default: {
-                return 'backend.news.type_choice.official';
+                return 'backend.news.flag_choice.type1';
             }break;
         }
     }

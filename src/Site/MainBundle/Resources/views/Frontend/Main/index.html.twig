@@ -1,16 +1,53 @@
 {% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
 
 {% from 'SiteMainBundle:Frontend/News:macros.html.twig' import listTab %}
-{% from 'SiteMainBundle:Frontend/News:macros.html.twig' import main %}
+{% from 'SiteMainBundle:Frontend/News:macros.html.twig' import listTabYoung %}
+{% from 'SiteMainBundle:Frontend/Slider:macros.html.twig' import main %}
 {% from 'SiteMainBundle:Frontend/Quote:macros.html.twig' import mainQuotes %}
+{% from 'SiteMainBundle:Frontend/Photo:macros.html.twig' import lastPhoto %}
+{% from 'SiteMainBundle:Frontend/Video:macros.html.twig' import lastVideo %}
 
 {% block title %}{{page.metaTitle}}{% endblock %}
 {% block description %}{{page.metaDescription}}{% endblock %}
 {% block keywords %}{{page.metaDescription}}{% endblock %}
 
+{% block body_attribute %}class="main-template"{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+    'bundles/sitemain/frontend/css/slick.css'
+    filter='yui_css' %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block main_content %}
-    {{ main(news[0]) }}
-    {{ listTab(news, 1) }}
+    {{ main(sliders) }}
+    <div class="left-block">
+        {{ listTab(news) }}
+        <div class="news-young">
+            <h2>Новости молодежной организации "Единая Алания"</h2>
+            {{ listTabYoung(newsYoung) }}
+            <a href="{{ path('frontend_subpage_index', {parent: 'molodiezhnaia-orghanizatsiia-iedinaia-alaniia', slug: 'novosti-1'}) }}" class="news-young-link">Все новости</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block right_block %}
+    <div class="right-block">
+        {{ parent() }}
+        <div class="wrap-media-block">
+            <div class="media-block">
+                {% if photo.id is defined %}
+                    {{ lastPhoto(photo) }}
+                {% endif %}
+                {% if video is defined %}
+                    {{ lastVideo(video) }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -21,7 +58,7 @@
 {% block javascripts %}
     {{ parent() }}
     {% javascripts
-    'bundles/sitemain/frontend/js/script.js'
+    'bundles/sitemain/frontend/js/slick/slick.min.js'
     filter='yui_js' %}
     <script type="text/javascript" src="{{ asset_url }}" id="scripts"></script>
     {% endjavascripts %}

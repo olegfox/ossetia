@@ -29,7 +29,7 @@ class MenuController extends Controller
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $entities,
-            $request->query->get('menu', $request->get('page') ? $request->get('page') : 1) /*menu number*/,
+            $request->query->get('page', 1) /*menu number*/,
             10/*limit per menu*/
         );
 

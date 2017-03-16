@@ -2,6 +2,10 @@ frontend_ajax_index:
     path:     /
     defaults: { _controller: "SiteMainBundle:Frontend/News:ajax" }
 
+frontend_stock_index:
+    path:     /stock
+    defaults: { _controller: "SiteMainBundle:Frontend/News:stockYoung" }
+
 frontend_news_index:
     path:     /{type}
     defaults: { _controller: "SiteMainBundle:Frontend/News:index" }

@@ -84,7 +84,8 @@ class FrontendMenuBuilder
                     ));
 
                     if ($m->getPage()->getSlug() == $request->get('parent') ||
-                        ($m->getPage()->getSlug() == 'molodiezhnaia-orghanizatsiia-iedinaia-alaniia' && $routeName == 'frontend_news_young_one')) {
+                        ($m->getPage()->getSlug() == 'molodiezhnaia-orghanizatsiia-iedinaia-alaniia' && $routeName == 'frontend_news_young_one') ||
+                        ($m->getPage()->getSlug() == 'molodiezhnaia-orghanizatsiia-iedinaia-alaniia' && $routeName == 'frontend_news_stock_one')) {
                         $child->setCurrent(true);
                     }
                 }

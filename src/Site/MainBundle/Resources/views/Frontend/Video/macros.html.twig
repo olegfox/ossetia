@@ -2,7 +2,12 @@
     <div class="news">
         {% for video in videos %}
             <a class="news-block" href="{{ path('frontend_video_one', {slug: video.slug}) }}">
-                <div class="cover"><img src="{{ image(video.video.previewImageUrl).zoomCrop(170, 190).jpeg(100) }}"></div>
+                {% if video.preview|length > 0 %}
+                    {% set preview = video.webPath() %}
+                {% else %}
+                    {% set preview = video.video.previewImageUrl %}
+                {% endif %}
+                <div class="cover"><img src="{{ image(preview).zoomCrop(170, 190).jpeg(100) }}"></div>
                 <div class="short-block">
                     <div class="date">{{ video.created|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
                     <div class="title">{{ video.title }}</div>
@@ -19,10 +24,32 @@
 {% macro videoBlock(video) %}
     {% if video.video.id is defined and video.video.link|length > 0 %}
         <div class="wrap-video">
+            {% if video.preview|length > 0 %}
+                {% set preview = video.webPath() %}
+            {% else %}
+                {% set preview = video.video.previewImageUrl %}
+            {% endif %}
             <a href="{{ video.video.original }}" class="fancybox">
                 <img src="{{ asset('bundles/sitemain/frontend/images/play.png') }}" class="play-button" alt=""/>
             </a>
-            <img src="{{ image(video.video.previewImageUrl).cropResize(500).jpeg(100) }}" alt=""/>
+            <img src="{{ image(preview).cropResize(500).jpeg(100) }}" alt=""/>
         </div>
     {% endif %}
+{% endmacro %}
+
+{% macro lastVideo(video) %}
+    <div class="wrap-video">
+        <h2>{{ video.title }}</h2>
+        <div class="video">
+            {% if video.preview|length > 0 %}
+                {% set preview = video.webPath() %}
+            {% else %}
+                {% set preview = video.video.previewImageUrl %}
+            {% endif %}
+            <a href="{{ path('frontend_video_one', {slug: video.slug}) }}">
+                <img src="{{ asset('bundles/sitemain/frontend/images/play.png') }}" class="play-button" alt=""/>
+            </a>
+            <img src="{{ image(preview).cropResize(500).jpeg(100) }}" alt=""/>
+        </div>
+    </div>
 {% endmacro %}
