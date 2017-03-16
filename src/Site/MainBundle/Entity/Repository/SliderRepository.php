@@ -12,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class SliderRepository extends EntityRepository
 {
+    public function findAll(){
+        return $this->createQueryBuilder('s')
+            ->orderBy('q.id', 'desc')
+            ->getQuery()
+            ->getResult();
+    }
 }
