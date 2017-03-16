@@ -15,7 +15,7 @@
         {% for n in news %}
             {% if first == 1 and loop.index == 1 %}
             {% else %}
-                <a class="news-block" href="{{ path('frontend_news_one', {type: n.getTypeUrl(type), slug: n.slug}) }}">
+                <a class="news-block" href="{{ path('frontend_news_one', {type: n.getTypeUrl(allType), slug: n.slug}) }}">
                     <div class="cover"><img src="{{ image(n.webPath).zoomCrop(340, 380).jpeg(100) }}"></div>
                     <div class="short-block">
                         <div class="date">{{ n.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
