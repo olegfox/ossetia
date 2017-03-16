@@ -25,7 +25,8 @@ class NewsController extends Controller
 
         $params = array(
             'news' => $pagination,
-            'page' => $page
+            'page' => $page,
+            'type' => $type
         );
 
         return $this->render('SiteMainBundle:Frontend/News:index.html.twig', $params);

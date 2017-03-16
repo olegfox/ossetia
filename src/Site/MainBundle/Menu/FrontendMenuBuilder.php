@@ -51,7 +51,7 @@ class FrontendMenuBuilder
                     $child = $menu->addChild($m->getTitle(), array(
                         'route' => 'frontend_news_index',
                         'routeParameters' => array(
-                            'type' => 'official'
+                            'type' => 'all'
                         )
                     ));
 
@@ -149,6 +149,7 @@ class FrontendMenuBuilder
         $menu->setChildrenAttribute('class', 'nav subnav container black');
 
         $types = array(
+            'Все' => 'all',
             'Официально' => 'official',
             'Срочно' => 'quickly',
             'Встречи с населением' => 'meeting',

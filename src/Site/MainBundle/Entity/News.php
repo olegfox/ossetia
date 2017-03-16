@@ -506,8 +506,11 @@ class News
         }
     }
 
-    public function getTypeUrl()
+    public function getTypeUrl($all = false)
     {
+        if ($all) {
+            return 'all';
+        }
         switch($this->type){
             case 0: {
                 return 'official';
