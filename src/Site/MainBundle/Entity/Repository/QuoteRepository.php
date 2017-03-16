@@ -10,6 +10,13 @@ namespace Site\MainBundle\Entity\Repository;
  */
 class QuoteRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAll(){
+        return $this->createQueryBuilder('q')
+            ->orderBy('q.date', 'desc')
+            ->getQuery()
+            ->getResult();
+    }
+
     //  Три последних цитаты
     public function findLast(){
 
