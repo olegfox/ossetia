@@ -14,7 +14,7 @@ class SliderRepository extends EntityRepository
 {
     public function findAll(){
         return $this->createQueryBuilder('s')
-            ->orderBy('q.id', 'desc')
+            ->orderBy('s.id', 'desc')
             ->getQuery()
             ->getResult();
     }
