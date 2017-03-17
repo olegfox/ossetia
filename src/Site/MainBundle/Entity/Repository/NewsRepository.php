@@ -22,11 +22,9 @@ class NewsRepository extends EntityRepository
         if ($flag == 1) {
             $query = $this->createQueryBuilder('n')
                 ->where('n.flag = :flag')
-                ->andWhere('n.type <> :type')
                 ->orderBy('n.date', 'desc')
                 ->setParameters(array(
-                    'flag' => $flag,
-                    'type' => 5
+                    'flag' => $flag
                 ))
                 ->getQuery()
                 ->getResult();
